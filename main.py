@@ -1,5 +1,6 @@
 import cv2
 import time
+from analysis.logger import CSVLogger
 from analysis.image_quality import compute_image_quality
 from utils.visualization import draw_fps, draw_counts, draw_quality
 
@@ -13,6 +14,7 @@ from utils.visualization import draw_fps, draw_counts
 def main():
     camera = Camera(CAMERA_ID)
     detector = YOLODetector(MODEL_PATH, CONFIDENCE)
+    logger = CSVLogger()
 
     prev_time = time.time()
 
@@ -36,6 +38,7 @@ def main():
         draw_fps(annotated, fps)
         draw_counts(annotated, counts)
         draw_quality(annotated, quality)
+        logger.log(fps, quality, counts)
 
         cv2.imshow("Smart Camera V3", annotated)
 
