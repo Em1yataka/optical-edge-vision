@@ -34,15 +34,37 @@ def draw_quality(frame, quality):
 
     cv2.putText(
         frame,
-        f"Brightness: {quality['brightness']:.1f}",
+        f"Brightness: {quality['brightness']:.1f} ({quality['brightness_status']})",
         (20, y),
         cv2.FONT_HERSHEY_SIMPLEX,
-        0.7,
+        0.6,
         (255, 255, 0),
         2,
     )
 
     y += 30
+
+    cv2.putText(
+        frame,
+        f"Contrast: {quality['contrast']:.1f} ({quality['contrast_status']})",
+        (20, y),
+        cv2.FONT_HERSHEY_SIMPLEX,
+        0.6,
+        (255, 255, 0),
+        2,
+    )
+
+    y += 30
+
+    cv2.putText(
+        frame,
+        f"Blur: {quality['blur']:.1f} ({quality['blur_status']})",
+        (20, y),
+        cv2.FONT_HERSHEY_SIMPLEX,
+        0.6,
+        (255, 255, 0),
+        2,
+    )
 
     cv2.putText(
         frame,

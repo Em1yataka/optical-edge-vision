@@ -13,4 +13,29 @@ def compute_image_quality(frame):
         "brightness": brightness,
         "contrast": contrast,
         "blur": blur,
+        "brightness_status": evaluate_brightness(brightness),
+        "contrast_status": evaluate_contrast(contrast),
+        "blur_status": evaluate_blur(blur),
     }
+
+
+def evaluate_brightness(value):
+    if value < 60:
+        return "Too Dark"
+    if value > 200:
+        return "Too Bright"
+    return "Good"
+
+
+def evaluate_contrast(value):
+    if value < 30:
+        return "Low"
+    if value > 90:
+        return "High"
+    return "Good"
+
+
+def evaluate_blur(value):
+    if value < 100:
+        return "Blurry"
+    return "Sharp"
