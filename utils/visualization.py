@@ -27,3 +27,41 @@ def draw_counts(frame, counts):
             2,
         )
         y += 35
+
+
+def draw_quality(frame, quality):
+    y = 180
+
+    cv2.putText(
+        frame,
+        f"Brightness: {quality['brightness']:.1f}",
+        (20, y),
+        cv2.FONT_HERSHEY_SIMPLEX,
+        0.7,
+        (255, 255, 0),
+        2,
+    )
+
+    y += 30
+
+    cv2.putText(
+        frame,
+        f"Contrast: {quality['contrast']:.1f}",
+        (20, y),
+        cv2.FONT_HERSHEY_SIMPLEX,
+        0.7,
+        (255, 255, 0),
+        2,
+    )
+
+    y += 30
+
+    cv2.putText(
+        frame,
+        f"Blur: {quality['blur']:.1f}",
+        (20, y),
+        cv2.FONT_HERSHEY_SIMPLEX,
+        0.7,
+        (255, 255, 0),
+        2,
+    )
