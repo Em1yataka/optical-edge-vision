@@ -5,16 +5,19 @@ def draw_fps(frame, fps):
     cv2.putText(
         frame,
         f"FPS: {fps:.2f}",
-        (20, 40),
+        (20, 35),
         cv2.FONT_HERSHEY_SIMPLEX,
-        1,
+        0.6,
         (0, 255, 0),
         2,
     )
 
 
 def draw_counts(frame, counts):
-    y = 80
+    y = 70
+    font_scale = 0.5
+    thickness = 1
+    color = (0, 255, 255)
 
     for name, count in counts.items():
         cv2.putText(
@@ -22,68 +25,38 @@ def draw_counts(frame, counts):
             f"{name}: {count}",
             (20, y),
             cv2.FONT_HERSHEY_SIMPLEX,
-            0.8,
-            (0, 255, 255),
-            2,
+            font_scale,
+            color,
+            thickness,
         )
-        y += 35
+        y += 25
 
 
 def draw_quality(frame, quality):
-    y = 180
+    h, w = frame.shape[:2]
 
-    cv2.putText(
-        frame,
-        f"Brightness: {quality['brightness']:.1f} ({quality['brightness_status']})",
-        (20, y),
-        cv2.FONT_HERSHEY_SIMPLEX,
-        0.6,
-        (255, 255, 0),
-        2,
-    )
+    x = 20
+    y = h - 105
 
-    y += 30
+    font_scale = 0.45
+    thickness = 1
+    color = (255, 255, 0)
 
-    cv2.putText(
-        frame,
-        f"Contrast: {quality['contrast']:.1f} ({quality['contrast_status']})",
-        (20, y),
-        cv2.FONT_HERSHEY_SIMPLEX,
-        0.6,
-        (255, 255, 0),
-        2,
-    )
+    lines = [
+        f"Brightness : {quality['brightness']:.1f} ({quality['brightness_status']})",
+        f"Contrast   : {quality['contrast']:.1f} ({quality['contrast_status']})",
+        f"Blur       : {quality['blur']:.1f}",
+        f"Sharpness  : {quality['blur_status']}",
+    ]
 
-    y += 30
-
-    cv2.putText(
-        frame,
-        f"Blur: {quality['blur']:.1f} ({quality['blur_status']})",
-        (20, y),
-        cv2.FONT_HERSHEY_SIMPLEX,
-        0.6,
-        (255, 255, 0),
-        2,
-    )
-
-    cv2.putText(
-        frame,
-        f"Contrast: {quality['contrast']:.1f}",
-        (20, y),
-        cv2.FONT_HERSHEY_SIMPLEX,
-        0.7,
-        (255, 255, 0),
-        2,
-    )
-
-    y += 30
-
-    cv2.putText(
-        frame,
-        f"Blur: {quality['blur']:.1f}",
-        (20, y),
-        cv2.FONT_HERSHEY_SIMPLEX,
-        0.7,
-        (255, 255, 0),
-        2,
-    )
+    for line in lines:
+        cv2.putText(
+            frame,
+            line,
+            (x, y),
+            cv2.FONT_HERSHEY_SIMPLEX,
+            font_scale,
+            color,
+            thickness,
+        )
+        y += 25
