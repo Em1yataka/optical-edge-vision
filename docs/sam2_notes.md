@@ -2,23 +2,23 @@
 
 ## Current Status
 
-- SAM2 repository has been cloned and installed.
-- Required dependencies have been installed.
+- SAM2 has been installed on the Jetson.
 - SAM2 tiny checkpoint has been downloaded.
-- Single-image SAM2 inference works on CPU.
+- Single-image CPU inference works successfully.
 - Test result saved to `results/sam2_test_result.jpg`.
 
 ## Result
 
-- Best segmentation score: 0.9079
+- SAM2 successfully segmented the prompted object.
+- Best segmentation score: 0.9079.
 
 ## Current Issue
 
-- GPU inference on Jetson Orin Nano currently fails with `CUBLAS_STATUS_ALLOC_FAILED`.
-- This appears to be related to CUDA/cuBLAS memory allocation or PyTorch compatibility.
+- GPU inference currently fails with `CUBLAS_STATUS_ALLOC_FAILED`.
+- This is likely related to CUDA/cuBLAS memory allocation or PyTorch compatibility on Jetson Orin Nano.
 
 ## Next Step
 
-- Keep SAM2 as an experimental segmentation module.
-- Investigate low-memory GPU inference or isolated environment.
-- Integrate SAM2 into the Smart Camera pipeline after GPU inference is stable.
+- Integrate SAM2 as a segmentation module.
+- Use YOLO bounding boxes as prompts for SAM2.
+- Keep SAM2 integration separate from the stable Smart Camera demo until GPU inference is resolved.
