@@ -38,10 +38,12 @@ def main():
     prev_time = time.time()
 
     frame_count = 0
-    sam2_interval = 30
+    sam2_interval = 100
 
     last_mask = None
     last_sam2_score = None
+    last_mask_area = None
+    last_sam2_time_ms = None
 
     while True:
         frame = camera.read()
@@ -62,25 +64,53 @@ def main():
 
         if person_box is not None and frame_count % sam2_interval == 0:
             print("Running SAM2 segmentation...")
+
+            start_sam2 = time.time()
+
             last_mask, last_sam2_score = segmenter.segment_from_box_center(
                 frame,
                 person_box,
             )
+
+            last_sam2_time_ms = (time.time() - start_sam2) * 1000
+            last_mask_area = int(last_mask.sum())
+
             print(f"SAM2 score: {last_sam2_score:.3f}")
+            print(f"Mask area: {last_mask_area}")
+            print(f"SAM2 time: {last_sam2_time_ms:.2f} ms")
 
         if last_mask is not None:
             annotated = overlay_mask(annotated, last_mask)
 
-            if last_sam2_score is not None:
-                cv2.putText(
-                    annotated,
-                    f"SAM2: {last_sam2_score:.3f}",
-                    (20, 130),
-                    cv2.FONT_HERSHEY_SIMPLEX,
-                    0.5,
-                    (0, 255, 0),
-                    1,
-                )
+            cv2.putText(
+                annotated,
+                f"SAM2: {last_sam2_score:.3f}",
+                (20, 130),
+                cv2.FONT_HERSHEY_SIMPLEX,
+                0.5,
+                (0, 255, 0),
+                1,
+            )
+
+            cv2.putText(
+                annotated,
+                f"Mask Area: {last_mask_area}",
+                (20, 155),
+                cv2.FONT_HERSHEY_SIMPLEX,
+                0.5,
+                (0, 255, 0),
+                1,
+            )
+
+            cv2.putText(
+                annotated,
+                f"SAM2 Time: {last_sam2_time_ms:.1f} ms",
+                (20, 180),
+                cv2.FONT_HERSHEY_SIMPLEX,
+                0.5,
+                (0, 255, 0),
+                1,
+            )
 
         now = time.time()
         fps = 1 / (now - prev_time)
@@ -90,7 +120,14 @@ def main():
         draw_counts(annotated, counts)
         draw_quality(annotated, quality)
 
-        logger.log(fps, quality, counts)
+        logger.log(
+            fps,
+            quality,
+            counts,
+            sam2_score=last_sam2_score,
+            mask_area=last_mask_area,
+            sam2_time_ms=last_sam2_time_ms,
+        )
 
         cv2.imshow("Smart Camera with SAM2", annotated)
 
