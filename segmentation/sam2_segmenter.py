@@ -3,9 +3,10 @@ from pathlib import Path
 
 import cv2
 import numpy as np
-import torch
 
-
+# ===============================
+# Locate SAM2 installation
+# ===============================
 SAM2_DIR = Path.home() / "jetson_projects" / "sam2_test" / "sam2"
 CHECKPOINT = SAM2_DIR / "checkpoints" / "sam2_hiera_tiny.pt"
 CONFIG = "sam2_hiera_t.yaml"
@@ -17,13 +18,26 @@ from sam2.sam2_image_predictor import SAM2ImagePredictor
 
 
 class SAM2Segmenter:
+
     def __init__(self, device="cpu"):
+
         self.device = device
-        self.model = build_sam2(CONFIG, str(CHECKPOINT), device=device)
+
+        self.model = build_sam2(
+            CONFIG,
+            str(CHECKPOINT),
+            device=device,
+        )
+
         self.predictor = SAM2ImagePredictor(self.model)
 
+    # ---------------------------------------------------
+    # Point Prompt
+    # ---------------------------------------------------
     def segment_from_point(self, frame, point):
+
         image_rgb = cv2.cvtColor(frame, cv2.COLOR_BGR2RGB)
+
         self.predictor.set_image(image_rgb)
 
         input_point = np.array([point])
@@ -35,15 +49,61 @@ class SAM2Segmenter:
             multimask_output=True,
         )
 
-        best_idx = int(np.argmax(scores))
+        best_idx = np.argmax(scores)
+
         mask = masks[best_idx].astype(bool)
+
         score = float(scores[best_idx])
 
         return mask, score
 
+    # ---------------------------------------------------
+    # Bounding Box Center
+    
+    # ---------------------------------------------------
     def segment_from_box_center(self, frame, box_xyxy):
+
         x1, y1, x2, y2 = box_xyxy
+
         cx = int((x1 + x2) / 2)
         cy = int((y1 + y2) / 2)
 
-        return self.segment_from_point(frame, (cx, cy))
+        return self.segment_from_point(
+            frame,
+            (cx, cy),
+        )
+
+    # ---------------------------------------------------
+    # Bounding Box Prompt
+    # (SAM2 )
+    # ---------------------------------------------------
+    def segment_from_box(self, frame, box_xyxy):
+
+        image_rgb = cv2.cvtColor(frame, cv2.COLOR_BGR2RGB)
+
+        self.predictor.set_image(image_rgb)
+
+        x1, y1, x2, y2 = box_xyxy
+
+        input_box = np.array(
+            [
+                x1,
+                y1,
+                x2,
+                y2,
+            ],
+            dtype=np.float32,
+        )
+
+        masks, scores, _ = self.predictor.predict(
+            box=input_box,
+            multimask_output=True,
+        )
+
+        best_idx = np.argmax(scores)
+
+        mask = masks[best_idx].astype(bool)
+
+        score = float(scores[best_idx])
+
+        return mask, score

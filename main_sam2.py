@@ -63,11 +63,11 @@ def main():
         person_box = get_first_person_box(result)
 
         if person_box is not None and frame_count % sam2_interval == 0:
-            print("Running SAM2 segmentation...")
+            print("Running SAM2 segmentation with box prompt...")
 
             start_sam2 = time.time()
 
-            last_mask, last_sam2_score = segmenter.segment_from_box_center(
+            last_mask, last_sam2_score = segmenter.segment_from_box(
                 frame,
                 person_box,
             )
