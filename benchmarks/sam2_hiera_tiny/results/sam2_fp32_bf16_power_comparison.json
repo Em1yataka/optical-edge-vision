@@ -1,0 +1,121 @@
+{
+  "model": "SAM2 Hiera Tiny",
+  "power_mode": "15W",
+  "power_rail": "VDD_IN",
+  "idle_power": {
+    "samples": 531,
+    "mean_w": 5.248521657250471,
+    "sample_std_w": 0.04507491669414587,
+    "min_w": 5.156,
+    "median_w": 5.234,
+    "max_w": 5.431
+  },
+  "results": {
+    "FP32": {
+      "run": {
+        "model": "SAM2 Hiera Tiny",
+        "generation": "SAM2 original",
+        "precision": "FP32",
+        "power_mode": "15W",
+        "start_time": "2026-07-16T16:41:17.517390",
+        "end_time": "2026-07-16T16:42:17.988324",
+        "duration_s": 60.4709582439973,
+        "inference_count": 97,
+        "mean_time_s": 0.623411940659766,
+        "mean_time_ms": 623.411940659766,
+        "throughput_fps": 1.6040757880602758,
+        "workload": {
+          "image_encoding_included": true,
+          "prompt_and_decoder_included": true,
+          "prompt": "one positive center point",
+          "multimask_output": true,
+          "camera_capture_included": false,
+          "visualization_included": false
+        }
+      },
+      "active_log": "/home/xia/jetson_projects/sam2_test/sam2/benchmark_results/sam2_fp32_active_15w_20260716.log",
+      "active_window": {
+        "start_inclusive": "2026-07-16T16:41:18",
+        "end_exclusive": "2026-07-16T16:42:17"
+      },
+      "active_power": {
+        "samples": 521,
+        "mean_w": 11.243222648752399,
+        "sample_std_w": 0.16252033111124617,
+        "min_w": 9.69,
+        "median_w": 11.241,
+        "max_w": 11.613
+      },
+      "incremental_power_w": 5.994700991501928,
+      "energy": {
+        "gross_total_j": 679.888447320671,
+        "incremental_total_j": 362.5053133423623,
+        "gross_j_per_inference": 7.009159250728567,
+        "incremental_j_per_inference": 3.73716817878724,
+        "gross_inferences_per_joule": 0.14267046363599956,
+        "incremental_inferences_per_joule": 0.26758228481023644,
+        "fps_per_active_watt": 0.14267046363599956
+      }
+    },
+    "BF16": {
+      "run": {
+        "model": "SAM2 Hiera Tiny",
+        "generation": "SAM2 original",
+        "precision": "BF16 autocast with FP32 weights",
+        "power_mode": "15W",
+        "start_time": "2026-07-16T16:42:42.939906",
+        "end_time": "2026-07-16T16:43:43.107064",
+        "duration_s": 60.16718030400807,
+        "inference_count": 234,
+        "mean_time_s": 0.25712470215388067,
+        "mean_time_ms": 257.12470215388066,
+        "throughput_fps": 3.889163474466693,
+        "workload": {
+          "image_encoding_included": true,
+          "prompt_and_decoder_included": true,
+          "prompt": "one positive center point",
+          "multimask_output": true,
+          "camera_capture_included": false,
+          "visualization_included": false
+        }
+      },
+      "active_log": "/home/xia/jetson_projects/sam2_test/sam2/benchmark_results/sam2_bf16_active_15w_20260716.log",
+      "active_window": {
+        "start_inclusive": "2026-07-16T16:42:43",
+        "end_exclusive": "2026-07-16T16:43:43"
+      },
+      "active_power": {
+        "samples": 528,
+        "mean_w": 10.991945075757576,
+        "sample_std_w": 0.32103966961011504,
+        "min_w": 6.651,
+        "median_w": 11.006,
+        "max_w": 11.457
+      },
+      "incremental_power_w": 5.7434234185071045,
+      "energy": {
+        "gross_total_j": 661.3543412648597,
+        "incremental_total_j": 345.56559238357937,
+        "gross_j_per_inference": 2.826300603695982,
+        "incremental_j_per_inference": 1.4767760358272624,
+        "gross_inferences_per_joule": 0.35381940572502796,
+        "incremental_inferences_per_joule": 0.6771507498358197,
+        "fps_per_active_watt": 0.35381940572502796
+      }
+    }
+  },
+  "comparison": {
+    "throughput_percent_change_bf16_vs_fp32": 142.4550949160359,
+    "active_power_percent_change_bf16_vs_fp32": -2.234924815108114,
+    "gross_energy_percent_change_bf16_vs_fp32": -59.67703824959888,
+    "incremental_energy_percent_change_bf16_vs_fp32": -60.48408941803375
+  },
+  "method": {
+    "same_day_paired_measurement": true,
+    "tegrastats_interval_ms": 100,
+    "image_encoding_included": true,
+    "prompt_and_decoder_included": true,
+    "camera_included": false,
+    "display_included": false
+  }
+}

@@ -1,0 +1,65 @@
+{
+  "model": "SAM2 Hiera Tiny",
+  "comparison": "FP32 versus BF16 autocast with FP32 weights",
+  "image": "../test_image.jpg",
+  "input_size": [
+    512,
+    512
+  ],
+  "prompt": {
+    "type": "one positive center point",
+    "coordinates": [
+      [
+        256.0,
+        256.0
+      ]
+    ]
+  },
+  "fp32": {
+    "best_mask_index": 2,
+    "scores": [
+      0.664592981338501,
+      0.6210781335830688,
+      0.9079521298408508
+    ],
+    "best_score": 0.9079521298408508,
+    "best_mask_area_pixels": 38712
+  },
+  "bf16": {
+    "best_mask_index": 2,
+    "scores": [
+      0.66015625,
+      0.61328125,
+      0.91015625
+    ],
+    "best_score": 0.91015625,
+    "best_mask_area_pixels": 38693
+  },
+  "best_mask_comparison": {
+    "intersection_pixels": 38660,
+    "union_pixels": 38745,
+    "iou": 0.9978061685378758,
+    "dice": 0.9989018797235321,
+    "pixel_agreement": 0.9996757507324219,
+    "pixel_disagreement": 0.000324249267578125,
+    "absolute_area_difference_pixels": 19,
+    "score_difference": 0.00220412015914917
+  },
+  "pairwise_mask_iou_matrix": [
+    [
+      0.9886901144201041,
+      0.3121839202516692,
+      0.508812321371864
+    ],
+    [
+      0.31335878370289577,
+      0.9983445114186263,
+      0.6088439769467345
+    ],
+    [
+      0.5099900563473649,
+      0.6075377144038024,
+      0.9978061685378758
+    ]
+  ]
+}

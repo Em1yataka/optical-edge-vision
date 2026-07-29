@@ -1,0 +1,1930 @@
+{
+  "benchmark_version": "1.0",
+  "timestamp": "2026-07-27T12:13:22.253622",
+  "model": {
+    "name": "SAM3 reduced no-text runtime",
+    "source_generation": "SAM3",
+    "path": "models/sam3_no_text_bf16",
+    "complete_original_parameters": 840376374,
+    "gpu_runtime_parameters": 486651702,
+    "precision": {
+      "weights": "BF16",
+      "execution": "BF16",
+      "cached_text_embedding": "BF16",
+      "integer_quantized": false,
+      "quantization_bit_width": null
+    },
+    "deployment_note": "Text encoder is executed offline on CPU; cached projected text features are supplied to the GPU segmentation runtime."
+  },
+  "input": {
+    "image": "/home/xia/jetson_projects/sam2_test/test_image.jpg",
+    "original_size": [
+      640,
+      480
+    ],
+    "model_input_shape": [
+      1,
+      3,
+      336,
+      336
+    ],
+    "prompt": "person",
+    "text_embedding_shape": [
+      1,
+      32,
+      256
+    ],
+    "batch_size": 1
+  },
+  "protocol": {
+    "warmup_runs": 1,
+    "measured_runs": 1,
+    "cuda_synchronization": true,
+    "flop_counter": "torch.utils.flop_counter.FlopCounterMode",
+    "profiled_latency_valid_for_performance": false,
+    "model_loading_included_in_latency": false,
+    "gpu_transfer_included_in_latency": false,
+    "image_preprocessing_included_in_latency": false,
+    "mask_postprocessing_included_in_latency": false,
+    "camera_capture_included": false,
+    "visualization_included": false
+  },
+  "flops": {
+    "operator_counted_flops": 615778288640,
+    "operator_counted_gflops": 615.77828864,
+    "counting_scope": "One complete forward pass of the reduced SAM3 GPU runtime at batch 1 and 336x336 input, including vision encoder, DETR components, scoring, and mask decoder; offline text encoder is excluded.",
+    "convention": "PyTorch FlopCounterMode convention. Only operations with registered FLOP formulas are counted; the result is an operator-counted estimate, not an exact count of every scalar operation.",
+    "module_operation_breakdown": {
+      "Sam3Model.vision_encoder.backbone.embeddings.patch_embeddings.projection": {
+        "aten.convolution": 693633024
+      },
+      "Sam3Model.vision_encoder.backbone.embeddings.patch_embeddings": {
+        "aten.convolution": 693633024
+      },
+      "Sam3Model.vision_encoder.backbone": {
+        "aten.convolution": 693633024,
+        "aten.addmm": 512174850048,
+        "aten._scaled_dot_product_flash_attention": 43486543872
+      },
+      "Sam3Model.vision_encoder": {
+        "aten.convolution": 24569708544,
+        "aten.addmm": 512174850048,
+        "aten._scaled_dot_product_flash_attention": 43486543872
+      },
+      "Sam3Model": {
+        "aten.convolution": 39371931648,
+        "aten.addmm": 528805858304,
+        "aten._scaled_dot_product_flash_attention": 45773199360,
+        "aten._scaled_dot_product_efficient_attention": 882966528,
+        "aten.bmm": 944332800
+      },
+      "Sam3Model.vision_encoder.backbone.embeddings": {
+        "aten.convolution": 693633024
+      },
+      "Global": {
+        "aten.convolution": 39371931648,
+        "aten.addmm": 528805858304,
+        "aten._scaled_dot_product_flash_attention": 45773199360,
+        "aten._scaled_dot_product_efficient_attention": 882966528,
+        "aten.bmm": 944332800
+      },
+      "Sam3Model.vision_encoder.backbone.layers.0.attention": {
+        "aten.addmm": 4831838208,
+        "aten._scaled_dot_product_flash_attention": 1358954496
+      },
+      "Sam3Model.vision_encoder.backbone.layers.0": {
+        "aten.addmm": 16005464064,
+        "aten._scaled_dot_product_flash_attention": 1358954496
+      },
+      "Sam3Model.vision_encoder.backbone.layers.0.attention.q_proj": {
+        "aten.addmm": 1207959552
+      },
+      "Sam3Model.vision_encoder.backbone.layers.0.attention.k_proj": {
+        "aten.addmm": 1207959552
+      },
+      "Sam3Model.vision_encoder.backbone.layers.0.attention.v_proj": {
+        "aten.addmm": 1207959552
+      },
+      "Sam3Model.vision_encoder.backbone.layers.0.attention.o_proj": {
+        "aten.addmm": 1207959552
+      },
+      "Sam3Model.vision_encoder.backbone.layers.0.mlp": {
+        "aten.addmm": 11173625856
+      },
+      "Sam3Model.vision_encoder.backbone.layers.0.mlp.fc1": {
+        "aten.addmm": 5586812928
+      },
+      "Sam3Model.vision_encoder.backbone.layers.0.mlp.fc2": {
+        "aten.addmm": 5586812928
+      },
+      "Sam3Model.vision_encoder.backbone.layers.1.attention": {
+        "aten.addmm": 4831838208,
+        "aten._scaled_dot_product_flash_attention": 1358954496
+      },
+      "Sam3Model.vision_encoder.backbone.layers.1.attention.q_proj": {
+        "aten.addmm": 1207959552
+      },
+      "Sam3Model.vision_encoder.backbone.layers.1": {
+        "aten.addmm": 16005464064,
+        "aten._scaled_dot_product_flash_attention": 1358954496
+      },
+      "Sam3Model.vision_encoder.backbone.layers.1.attention.k_proj": {
+        "aten.addmm": 1207959552
+      },
+      "Sam3Model.vision_encoder.backbone.layers.1.attention.v_proj": {
+        "aten.addmm": 1207959552
+      },
+      "Sam3Model.vision_encoder.backbone.layers.1.attention.o_proj": {
+        "aten.addmm": 1207959552
+      },
+      "Sam3Model.vision_encoder.backbone.layers.1.mlp": {
+        "aten.addmm": 11173625856
+      },
+      "Sam3Model.vision_encoder.backbone.layers.1.mlp.fc1": {
+        "aten.addmm": 5586812928
+      },
+      "Sam3Model.vision_encoder.backbone.layers.1.mlp.fc2": {
+        "aten.addmm": 5586812928
+      },
+      "Sam3Model.vision_encoder.backbone.layers.2": {
+        "aten.addmm": 16005464064,
+        "aten._scaled_dot_product_flash_attention": 1358954496
+      },
+      "Sam3Model.vision_encoder.backbone.layers.2.attention": {
+        "aten.addmm": 4831838208,
+        "aten._scaled_dot_product_flash_attention": 1358954496
+      },
+      "Sam3Model.vision_encoder.backbone.layers.2.attention.q_proj": {
+        "aten.addmm": 1207959552
+      },
+      "Sam3Model.vision_encoder.backbone.layers.2.attention.k_proj": {
+        "aten.addmm": 1207959552
+      },
+      "Sam3Model.vision_encoder.backbone.layers.2.attention.v_proj": {
+        "aten.addmm": 1207959552
+      },
+      "Sam3Model.vision_encoder.backbone.layers.2.attention.o_proj": {
+        "aten.addmm": 1207959552
+      },
+      "Sam3Model.vision_encoder.backbone.layers.2.mlp.fc1": {
+        "aten.addmm": 5586812928
+      },
+      "Sam3Model.vision_encoder.backbone.layers.2.mlp": {
+        "aten.addmm": 11173625856
+      },
+      "Sam3Model.vision_encoder.backbone.layers.2.mlp.fc2": {
+        "aten.addmm": 5586812928
+      },
+      "Sam3Model.vision_encoder.backbone.layers.3.attention.q_proj": {
+        "aten.addmm": 1207959552
+      },
+      "Sam3Model.vision_encoder.backbone.layers.3.attention": {
+        "aten.addmm": 4831838208,
+        "aten._scaled_dot_product_flash_attention": 1358954496
+      },
+      "Sam3Model.vision_encoder.backbone.layers.3": {
+        "aten.addmm": 16005464064,
+        "aten._scaled_dot_product_flash_attention": 1358954496
+      },
+      "Sam3Model.vision_encoder.backbone.layers.3.attention.k_proj": {
+        "aten.addmm": 1207959552
+      },
+      "Sam3Model.vision_encoder.backbone.layers.3.attention.v_proj": {
+        "aten.addmm": 1207959552
+      },
+      "Sam3Model.vision_encoder.backbone.layers.3.attention.o_proj": {
+        "aten.addmm": 1207959552
+      },
+      "Sam3Model.vision_encoder.backbone.layers.3.mlp.fc1": {
+        "aten.addmm": 5586812928
+      },
+      "Sam3Model.vision_encoder.backbone.layers.3.mlp": {
+        "aten.addmm": 11173625856
+      },
+      "Sam3Model.vision_encoder.backbone.layers.3.mlp.fc2": {
+        "aten.addmm": 5586812928
+      },
+      "Sam3Model.vision_encoder.backbone.layers.4.attention.q_proj": {
+        "aten.addmm": 1207959552
+      },
+      "Sam3Model.vision_encoder.backbone.layers.4.attention": {
+        "aten.addmm": 4831838208,
+        "aten._scaled_dot_product_flash_attention": 1358954496
+      },
+      "Sam3Model.vision_encoder.backbone.layers.4": {
+        "aten.addmm": 16005464064,
+        "aten._scaled_dot_product_flash_attention": 1358954496
+      },
+      "Sam3Model.vision_encoder.backbone.layers.4.attention.k_proj": {
+        "aten.addmm": 1207959552
+      },
+      "Sam3Model.vision_encoder.backbone.layers.4.attention.v_proj": {
+        "aten.addmm": 1207959552
+      },
+      "Sam3Model.vision_encoder.backbone.layers.4.attention.o_proj": {
+        "aten.addmm": 1207959552
+      },
+      "Sam3Model.vision_encoder.backbone.layers.4.mlp.fc1": {
+        "aten.addmm": 5586812928
+      },
+      "Sam3Model.vision_encoder.backbone.layers.4.mlp": {
+        "aten.addmm": 11173625856
+      },
+      "Sam3Model.vision_encoder.backbone.layers.4.mlp.fc2": {
+        "aten.addmm": 5586812928
+      },
+      "Sam3Model.vision_encoder.backbone.layers.5.attention.q_proj": {
+        "aten.addmm": 1207959552
+      },
+      "Sam3Model.vision_encoder.backbone.layers.5.attention": {
+        "aten.addmm": 4831838208,
+        "aten._scaled_dot_product_flash_attention": 1358954496
+      },
+      "Sam3Model.vision_encoder.backbone.layers.5": {
+        "aten.addmm": 16005464064,
+        "aten._scaled_dot_product_flash_attention": 1358954496
+      },
+      "Sam3Model.vision_encoder.backbone.layers.5.attention.k_proj": {
+        "aten.addmm": 1207959552
+      },
+      "Sam3Model.vision_encoder.backbone.layers.5.attention.v_proj": {
+        "aten.addmm": 1207959552
+      },
+      "Sam3Model.vision_encoder.backbone.layers.5.attention.o_proj": {
+        "aten.addmm": 1207959552
+      },
+      "Sam3Model.vision_encoder.backbone.layers.5.mlp": {
+        "aten.addmm": 11173625856
+      },
+      "Sam3Model.vision_encoder.backbone.layers.5.mlp.fc1": {
+        "aten.addmm": 5586812928
+      },
+      "Sam3Model.vision_encoder.backbone.layers.5.mlp.fc2": {
+        "aten.addmm": 5586812928
+      },
+      "Sam3Model.vision_encoder.backbone.layers.6": {
+        "aten.addmm": 16005464064,
+        "aten._scaled_dot_product_flash_attention": 1358954496
+      },
+      "Sam3Model.vision_encoder.backbone.layers.6.attention": {
+        "aten.addmm": 4831838208,
+        "aten._scaled_dot_product_flash_attention": 1358954496
+      },
+      "Sam3Model.vision_encoder.backbone.layers.6.attention.q_proj": {
+        "aten.addmm": 1207959552
+      },
+      "Sam3Model.vision_encoder.backbone.layers.6.attention.k_proj": {
+        "aten.addmm": 1207959552
+      },
+      "Sam3Model.vision_encoder.backbone.layers.6.attention.v_proj": {
+        "aten.addmm": 1207959552
+      },
+      "Sam3Model.vision_encoder.backbone.layers.6.attention.o_proj": {
+        "aten.addmm": 1207959552
+      },
+      "Sam3Model.vision_encoder.backbone.layers.6.mlp.fc1": {
+        "aten.addmm": 5586812928
+      },
+      "Sam3Model.vision_encoder.backbone.layers.6.mlp": {
+        "aten.addmm": 11173625856
+      },
+      "Sam3Model.vision_encoder.backbone.layers.6.mlp.fc2": {
+        "aten.addmm": 5586812928
+      },
+      "Sam3Model.vision_encoder.backbone.layers.7": {
+        "aten.addmm": 16005464064,
+        "aten._scaled_dot_product_flash_attention": 1358954496
+      },
+      "Sam3Model.vision_encoder.backbone.layers.7.attention.q_proj": {
+        "aten.addmm": 1207959552
+      },
+      "Sam3Model.vision_encoder.backbone.layers.7.attention": {
+        "aten.addmm": 4831838208,
+        "aten._scaled_dot_product_flash_attention": 1358954496
+      },
+      "Sam3Model.vision_encoder.backbone.layers.7.attention.k_proj": {
+        "aten.addmm": 1207959552
+      },
+      "Sam3Model.vision_encoder.backbone.layers.7.attention.v_proj": {
+        "aten.addmm": 1207959552
+      },
+      "Sam3Model.vision_encoder.backbone.layers.7.attention.o_proj": {
+        "aten.addmm": 1207959552
+      },
+      "Sam3Model.vision_encoder.backbone.layers.7.mlp.fc1": {
+        "aten.addmm": 5586812928
+      },
+      "Sam3Model.vision_encoder.backbone.layers.7.mlp": {
+        "aten.addmm": 11173625856
+      },
+      "Sam3Model.vision_encoder.backbone.layers.7.mlp.fc2": {
+        "aten.addmm": 5586812928
+      },
+      "Sam3Model.vision_encoder.backbone.layers.8": {
+        "aten.addmm": 16005464064,
+        "aten._scaled_dot_product_flash_attention": 1358954496
+      },
+      "Sam3Model.vision_encoder.backbone.layers.8.attention": {
+        "aten.addmm": 4831838208,
+        "aten._scaled_dot_product_flash_attention": 1358954496
+      },
+      "Sam3Model.vision_encoder.backbone.layers.8.attention.q_proj": {
+        "aten.addmm": 1207959552
+      },
+      "Sam3Model.vision_encoder.backbone.layers.8.attention.k_proj": {
+        "aten.addmm": 1207959552
+      },
+      "Sam3Model.vision_encoder.backbone.layers.8.attention.v_proj": {
+        "aten.addmm": 1207959552
+      },
+      "Sam3Model.vision_encoder.backbone.layers.8.attention.o_proj": {
+        "aten.addmm": 1207959552
+      },
+      "Sam3Model.vision_encoder.backbone.layers.8.mlp.fc1": {
+        "aten.addmm": 5586812928
+      },
+      "Sam3Model.vision_encoder.backbone.layers.8.mlp": {
+        "aten.addmm": 11173625856
+      },
+      "Sam3Model.vision_encoder.backbone.layers.8.mlp.fc2": {
+        "aten.addmm": 5586812928
+      },
+      "Sam3Model.vision_encoder.backbone.layers.9.attention": {
+        "aten.addmm": 4831838208,
+        "aten._scaled_dot_product_flash_attention": 1358954496
+      },
+      "Sam3Model.vision_encoder.backbone.layers.9.attention.q_proj": {
+        "aten.addmm": 1207959552
+      },
+      "Sam3Model.vision_encoder.backbone.layers.9": {
+        "aten.addmm": 16005464064,
+        "aten._scaled_dot_product_flash_attention": 1358954496
+      },
+      "Sam3Model.vision_encoder.backbone.layers.9.attention.k_proj": {
+        "aten.addmm": 1207959552
+      },
+      "Sam3Model.vision_encoder.backbone.layers.9.attention.v_proj": {
+        "aten.addmm": 1207959552
+      },
+      "Sam3Model.vision_encoder.backbone.layers.9.attention.o_proj": {
+        "aten.addmm": 1207959552
+      },
+      "Sam3Model.vision_encoder.backbone.layers.9.mlp": {
+        "aten.addmm": 11173625856
+      },
+      "Sam3Model.vision_encoder.backbone.layers.9.mlp.fc1": {
+        "aten.addmm": 5586812928
+      },
+      "Sam3Model.vision_encoder.backbone.layers.9.mlp.fc2": {
+        "aten.addmm": 5586812928
+      },
+      "Sam3Model.vision_encoder.backbone.layers.10.attention.q_proj": {
+        "aten.addmm": 1207959552
+      },
+      "Sam3Model.vision_encoder.backbone.layers.10": {
+        "aten.addmm": 16005464064,
+        "aten._scaled_dot_product_flash_attention": 1358954496
+      },
+      "Sam3Model.vision_encoder.backbone.layers.10.attention": {
+        "aten.addmm": 4831838208,
+        "aten._scaled_dot_product_flash_attention": 1358954496
+      },
+      "Sam3Model.vision_encoder.backbone.layers.10.attention.k_proj": {
+        "aten.addmm": 1207959552
+      },
+      "Sam3Model.vision_encoder.backbone.layers.10.attention.v_proj": {
+        "aten.addmm": 1207959552
+      },
+      "Sam3Model.vision_encoder.backbone.layers.10.attention.o_proj": {
+        "aten.addmm": 1207959552
+      },
+      "Sam3Model.vision_encoder.backbone.layers.10.mlp.fc1": {
+        "aten.addmm": 5586812928
+      },
+      "Sam3Model.vision_encoder.backbone.layers.10.mlp": {
+        "aten.addmm": 11173625856
+      },
+      "Sam3Model.vision_encoder.backbone.layers.10.mlp.fc2": {
+        "aten.addmm": 5586812928
+      },
+      "Sam3Model.vision_encoder.backbone.layers.11": {
+        "aten.addmm": 16005464064,
+        "aten._scaled_dot_product_flash_attention": 1358954496
+      },
+      "Sam3Model.vision_encoder.backbone.layers.11.attention": {
+        "aten.addmm": 4831838208,
+        "aten._scaled_dot_product_flash_attention": 1358954496
+      },
+      "Sam3Model.vision_encoder.backbone.layers.11.attention.q_proj": {
+        "aten.addmm": 1207959552
+      },
+      "Sam3Model.vision_encoder.backbone.layers.11.attention.k_proj": {
+        "aten.addmm": 1207959552
+      },
+      "Sam3Model.vision_encoder.backbone.layers.11.attention.v_proj": {
+        "aten.addmm": 1207959552
+      },
+      "Sam3Model.vision_encoder.backbone.layers.11.attention.o_proj": {
+        "aten.addmm": 1207959552
+      },
+      "Sam3Model.vision_encoder.backbone.layers.11.mlp.fc1": {
+        "aten.addmm": 5586812928
+      },
+      "Sam3Model.vision_encoder.backbone.layers.11.mlp": {
+        "aten.addmm": 11173625856
+      },
+      "Sam3Model.vision_encoder.backbone.layers.11.mlp.fc2": {
+        "aten.addmm": 5586812928
+      },
+      "Sam3Model.vision_encoder.backbone.layers.12.attention": {
+        "aten.addmm": 4831838208,
+        "aten._scaled_dot_product_flash_attention": 1358954496
+      },
+      "Sam3Model.vision_encoder.backbone.layers.12.attention.q_proj": {
+        "aten.addmm": 1207959552
+      },
+      "Sam3Model.vision_encoder.backbone.layers.12": {
+        "aten.addmm": 16005464064,
+        "aten._scaled_dot_product_flash_attention": 1358954496
+      },
+      "Sam3Model.vision_encoder.backbone.layers.12.attention.k_proj": {
+        "aten.addmm": 1207959552
+      },
+      "Sam3Model.vision_encoder.backbone.layers.12.attention.v_proj": {
+        "aten.addmm": 1207959552
+      },
+      "Sam3Model.vision_encoder.backbone.layers.12.attention.o_proj": {
+        "aten.addmm": 1207959552
+      },
+      "Sam3Model.vision_encoder.backbone.layers.12.mlp": {
+        "aten.addmm": 11173625856
+      },
+      "Sam3Model.vision_encoder.backbone.layers.12.mlp.fc1": {
+        "aten.addmm": 5586812928
+      },
+      "Sam3Model.vision_encoder.backbone.layers.12.mlp.fc2": {
+        "aten.addmm": 5586812928
+      },
+      "Sam3Model.vision_encoder.backbone.layers.13": {
+        "aten.addmm": 16005464064,
+        "aten._scaled_dot_product_flash_attention": 1358954496
+      },
+      "Sam3Model.vision_encoder.backbone.layers.13.attention": {
+        "aten.addmm": 4831838208,
+        "aten._scaled_dot_product_flash_attention": 1358954496
+      },
+      "Sam3Model.vision_encoder.backbone.layers.13.attention.q_proj": {
+        "aten.addmm": 1207959552
+      },
+      "Sam3Model.vision_encoder.backbone.layers.13.attention.k_proj": {
+        "aten.addmm": 1207959552
+      },
+      "Sam3Model.vision_encoder.backbone.layers.13.attention.v_proj": {
+        "aten.addmm": 1207959552
+      },
+      "Sam3Model.vision_encoder.backbone.layers.13.attention.o_proj": {
+        "aten.addmm": 1207959552
+      },
+      "Sam3Model.vision_encoder.backbone.layers.13.mlp": {
+        "aten.addmm": 11173625856
+      },
+      "Sam3Model.vision_encoder.backbone.layers.13.mlp.fc1": {
+        "aten.addmm": 5586812928
+      },
+      "Sam3Model.vision_encoder.backbone.layers.13.mlp.fc2": {
+        "aten.addmm": 5586812928
+      },
+      "Sam3Model.vision_encoder.backbone.layers.14.attention": {
+        "aten.addmm": 4831838208,
+        "aten._scaled_dot_product_flash_attention": 1358954496
+      },
+      "Sam3Model.vision_encoder.backbone.layers.14.attention.q_proj": {
+        "aten.addmm": 1207959552
+      },
+      "Sam3Model.vision_encoder.backbone.layers.14": {
+        "aten.addmm": 16005464064,
+        "aten._scaled_dot_product_flash_attention": 1358954496
+      },
+      "Sam3Model.vision_encoder.backbone.layers.14.attention.k_proj": {
+        "aten.addmm": 1207959552
+      },
+      "Sam3Model.vision_encoder.backbone.layers.14.attention.v_proj": {
+        "aten.addmm": 1207959552
+      },
+      "Sam3Model.vision_encoder.backbone.layers.14.attention.o_proj": {
+        "aten.addmm": 1207959552
+      },
+      "Sam3Model.vision_encoder.backbone.layers.14.mlp.fc1": {
+        "aten.addmm": 5586812928
+      },
+      "Sam3Model.vision_encoder.backbone.layers.14.mlp": {
+        "aten.addmm": 11173625856
+      },
+      "Sam3Model.vision_encoder.backbone.layers.14.mlp.fc2": {
+        "aten.addmm": 5586812928
+      },
+      "Sam3Model.vision_encoder.backbone.layers.15.attention": {
+        "aten.addmm": 4831838208,
+        "aten._scaled_dot_product_flash_attention": 1358954496
+      },
+      "Sam3Model.vision_encoder.backbone.layers.15": {
+        "aten.addmm": 16005464064,
+        "aten._scaled_dot_product_flash_attention": 1358954496
+      },
+      "Sam3Model.vision_encoder.backbone.layers.15.attention.q_proj": {
+        "aten.addmm": 1207959552
+      },
+      "Sam3Model.vision_encoder.backbone.layers.15.attention.k_proj": {
+        "aten.addmm": 1207959552
+      },
+      "Sam3Model.vision_encoder.backbone.layers.15.attention.v_proj": {
+        "aten.addmm": 1207959552
+      },
+      "Sam3Model.vision_encoder.backbone.layers.15.attention.o_proj": {
+        "aten.addmm": 1207959552
+      },
+      "Sam3Model.vision_encoder.backbone.layers.15.mlp": {
+        "aten.addmm": 11173625856
+      },
+      "Sam3Model.vision_encoder.backbone.layers.15.mlp.fc1": {
+        "aten.addmm": 5586812928
+      },
+      "Sam3Model.vision_encoder.backbone.layers.15.mlp.fc2": {
+        "aten.addmm": 5586812928
+      },
+      "Sam3Model.vision_encoder.backbone.layers.16.attention": {
+        "aten.addmm": 4831838208,
+        "aten._scaled_dot_product_flash_attention": 1358954496
+      },
+      "Sam3Model.vision_encoder.backbone.layers.16": {
+        "aten.addmm": 16005464064,
+        "aten._scaled_dot_product_flash_attention": 1358954496
+      },
+      "Sam3Model.vision_encoder.backbone.layers.16.attention.q_proj": {
+        "aten.addmm": 1207959552
+      },
+      "Sam3Model.vision_encoder.backbone.layers.16.attention.k_proj": {
+        "aten.addmm": 1207959552
+      },
+      "Sam3Model.vision_encoder.backbone.layers.16.attention.v_proj": {
+        "aten.addmm": 1207959552
+      },
+      "Sam3Model.vision_encoder.backbone.layers.16.attention.o_proj": {
+        "aten.addmm": 1207959552
+      },
+      "Sam3Model.vision_encoder.backbone.layers.16.mlp": {
+        "aten.addmm": 11173625856
+      },
+      "Sam3Model.vision_encoder.backbone.layers.16.mlp.fc1": {
+        "aten.addmm": 5586812928
+      },
+      "Sam3Model.vision_encoder.backbone.layers.16.mlp.fc2": {
+        "aten.addmm": 5586812928
+      },
+      "Sam3Model.vision_encoder.backbone.layers.17": {
+        "aten.addmm": 16005464064,
+        "aten._scaled_dot_product_flash_attention": 1358954496
+      },
+      "Sam3Model.vision_encoder.backbone.layers.17.attention.q_proj": {
+        "aten.addmm": 1207959552
+      },
+      "Sam3Model.vision_encoder.backbone.layers.17.attention": {
+        "aten.addmm": 4831838208,
+        "aten._scaled_dot_product_flash_attention": 1358954496
+      },
+      "Sam3Model.vision_encoder.backbone.layers.17.attention.k_proj": {
+        "aten.addmm": 1207959552
+      },
+      "Sam3Model.vision_encoder.backbone.layers.17.attention.v_proj": {
+        "aten.addmm": 1207959552
+      },
+      "Sam3Model.vision_encoder.backbone.layers.17.attention.o_proj": {
+        "aten.addmm": 1207959552
+      },
+      "Sam3Model.vision_encoder.backbone.layers.17.mlp.fc1": {
+        "aten.addmm": 5586812928
+      },
+      "Sam3Model.vision_encoder.backbone.layers.17.mlp": {
+        "aten.addmm": 11173625856
+      },
+      "Sam3Model.vision_encoder.backbone.layers.17.mlp.fc2": {
+        "aten.addmm": 5586812928
+      },
+      "Sam3Model.vision_encoder.backbone.layers.18.attention": {
+        "aten.addmm": 4831838208,
+        "aten._scaled_dot_product_flash_attention": 1358954496
+      },
+      "Sam3Model.vision_encoder.backbone.layers.18": {
+        "aten.addmm": 16005464064,
+        "aten._scaled_dot_product_flash_attention": 1358954496
+      },
+      "Sam3Model.vision_encoder.backbone.layers.18.attention.q_proj": {
+        "aten.addmm": 1207959552
+      },
+      "Sam3Model.vision_encoder.backbone.layers.18.attention.k_proj": {
+        "aten.addmm": 1207959552
+      },
+      "Sam3Model.vision_encoder.backbone.layers.18.attention.v_proj": {
+        "aten.addmm": 1207959552
+      },
+      "Sam3Model.vision_encoder.backbone.layers.18.attention.o_proj": {
+        "aten.addmm": 1207959552
+      },
+      "Sam3Model.vision_encoder.backbone.layers.18.mlp": {
+        "aten.addmm": 11173625856
+      },
+      "Sam3Model.vision_encoder.backbone.layers.18.mlp.fc1": {
+        "aten.addmm": 5586812928
+      },
+      "Sam3Model.vision_encoder.backbone.layers.18.mlp.fc2": {
+        "aten.addmm": 5586812928
+      },
+      "Sam3Model.vision_encoder.backbone.layers.19.attention": {
+        "aten.addmm": 4831838208,
+        "aten._scaled_dot_product_flash_attention": 1358954496
+      },
+      "Sam3Model.vision_encoder.backbone.layers.19": {
+        "aten.addmm": 16005464064,
+        "aten._scaled_dot_product_flash_attention": 1358954496
+      },
+      "Sam3Model.vision_encoder.backbone.layers.19.attention.q_proj": {
+        "aten.addmm": 1207959552
+      },
+      "Sam3Model.vision_encoder.backbone.layers.19.attention.k_proj": {
+        "aten.addmm": 1207959552
+      },
+      "Sam3Model.vision_encoder.backbone.layers.19.attention.v_proj": {
+        "aten.addmm": 1207959552
+      },
+      "Sam3Model.vision_encoder.backbone.layers.19.attention.o_proj": {
+        "aten.addmm": 1207959552
+      },
+      "Sam3Model.vision_encoder.backbone.layers.19.mlp.fc1": {
+        "aten.addmm": 5586812928
+      },
+      "Sam3Model.vision_encoder.backbone.layers.19.mlp": {
+        "aten.addmm": 11173625856
+      },
+      "Sam3Model.vision_encoder.backbone.layers.19.mlp.fc2": {
+        "aten.addmm": 5586812928
+      },
+      "Sam3Model.vision_encoder.backbone.layers.20.attention": {
+        "aten.addmm": 4831838208,
+        "aten._scaled_dot_product_flash_attention": 1358954496
+      },
+      "Sam3Model.vision_encoder.backbone.layers.20": {
+        "aten.addmm": 16005464064,
+        "aten._scaled_dot_product_flash_attention": 1358954496
+      },
+      "Sam3Model.vision_encoder.backbone.layers.20.attention.q_proj": {
+        "aten.addmm": 1207959552
+      },
+      "Sam3Model.vision_encoder.backbone.layers.20.attention.k_proj": {
+        "aten.addmm": 1207959552
+      },
+      "Sam3Model.vision_encoder.backbone.layers.20.attention.v_proj": {
+        "aten.addmm": 1207959552
+      },
+      "Sam3Model.vision_encoder.backbone.layers.20.attention.o_proj": {
+        "aten.addmm": 1207959552
+      },
+      "Sam3Model.vision_encoder.backbone.layers.20.mlp.fc1": {
+        "aten.addmm": 5586812928
+      },
+      "Sam3Model.vision_encoder.backbone.layers.20.mlp": {
+        "aten.addmm": 11173625856
+      },
+      "Sam3Model.vision_encoder.backbone.layers.20.mlp.fc2": {
+        "aten.addmm": 5586812928
+      },
+      "Sam3Model.vision_encoder.backbone.layers.21.attention.q_proj": {
+        "aten.addmm": 1207959552
+      },
+      "Sam3Model.vision_encoder.backbone.layers.21.attention": {
+        "aten.addmm": 4831838208,
+        "aten._scaled_dot_product_flash_attention": 1358954496
+      },
+      "Sam3Model.vision_encoder.backbone.layers.21": {
+        "aten.addmm": 16005464064,
+        "aten._scaled_dot_product_flash_attention": 1358954496
+      },
+      "Sam3Model.vision_encoder.backbone.layers.21.attention.k_proj": {
+        "aten.addmm": 1207959552
+      },
+      "Sam3Model.vision_encoder.backbone.layers.21.attention.v_proj": {
+        "aten.addmm": 1207959552
+      },
+      "Sam3Model.vision_encoder.backbone.layers.21.attention.o_proj": {
+        "aten.addmm": 1207959552
+      },
+      "Sam3Model.vision_encoder.backbone.layers.21.mlp.fc1": {
+        "aten.addmm": 5586812928
+      },
+      "Sam3Model.vision_encoder.backbone.layers.21.mlp": {
+        "aten.addmm": 11173625856
+      },
+      "Sam3Model.vision_encoder.backbone.layers.21.mlp.fc2": {
+        "aten.addmm": 5586812928
+      },
+      "Sam3Model.vision_encoder.backbone.layers.22.attention.q_proj": {
+        "aten.addmm": 1207959552
+      },
+      "Sam3Model.vision_encoder.backbone.layers.22.attention": {
+        "aten.addmm": 4831838208,
+        "aten._scaled_dot_product_flash_attention": 1358954496
+      },
+      "Sam3Model.vision_encoder.backbone.layers.22": {
+        "aten.addmm": 16005464064,
+        "aten._scaled_dot_product_flash_attention": 1358954496
+      },
+      "Sam3Model.vision_encoder.backbone.layers.22.attention.k_proj": {
+        "aten.addmm": 1207959552
+      },
+      "Sam3Model.vision_encoder.backbone.layers.22.attention.v_proj": {
+        "aten.addmm": 1207959552
+      },
+      "Sam3Model.vision_encoder.backbone.layers.22.attention.o_proj": {
+        "aten.addmm": 1207959552
+      },
+      "Sam3Model.vision_encoder.backbone.layers.22.mlp": {
+        "aten.addmm": 11173625856
+      },
+      "Sam3Model.vision_encoder.backbone.layers.22.mlp.fc1": {
+        "aten.addmm": 5586812928
+      },
+      "Sam3Model.vision_encoder.backbone.layers.22.mlp.fc2": {
+        "aten.addmm": 5586812928
+      },
+      "Sam3Model.vision_encoder.backbone.layers.23": {
+        "aten.addmm": 16005464064,
+        "aten._scaled_dot_product_flash_attention": 1358954496
+      },
+      "Sam3Model.vision_encoder.backbone.layers.23.attention": {
+        "aten.addmm": 4831838208,
+        "aten._scaled_dot_product_flash_attention": 1358954496
+      },
+      "Sam3Model.vision_encoder.backbone.layers.23.attention.q_proj": {
+        "aten.addmm": 1207959552
+      },
+      "Sam3Model.vision_encoder.backbone.layers.23.attention.k_proj": {
+        "aten.addmm": 1207959552
+      },
+      "Sam3Model.vision_encoder.backbone.layers.23.attention.v_proj": {
+        "aten.addmm": 1207959552
+      },
+      "Sam3Model.vision_encoder.backbone.layers.23.attention.o_proj": {
+        "aten.addmm": 1207959552
+      },
+      "Sam3Model.vision_encoder.backbone.layers.23.mlp.fc1": {
+        "aten.addmm": 5586812928
+      },
+      "Sam3Model.vision_encoder.backbone.layers.23.mlp": {
+        "aten.addmm": 11173625856
+      },
+      "Sam3Model.vision_encoder.backbone.layers.23.mlp.fc2": {
+        "aten.addmm": 5586812928
+      },
+      "Sam3Model.vision_encoder.backbone.layers.24": {
+        "aten.addmm": 16005464064,
+        "aten._scaled_dot_product_flash_attention": 1358954496
+      },
+      "Sam3Model.vision_encoder.backbone.layers.24.attention.q_proj": {
+        "aten.addmm": 1207959552
+      },
+      "Sam3Model.vision_encoder.backbone.layers.24.attention": {
+        "aten.addmm": 4831838208,
+        "aten._scaled_dot_product_flash_attention": 1358954496
+      },
+      "Sam3Model.vision_encoder.backbone.layers.24.attention.k_proj": {
+        "aten.addmm": 1207959552
+      },
+      "Sam3Model.vision_encoder.backbone.layers.24.attention.v_proj": {
+        "aten.addmm": 1207959552
+      },
+      "Sam3Model.vision_encoder.backbone.layers.24.attention.o_proj": {
+        "aten.addmm": 1207959552
+      },
+      "Sam3Model.vision_encoder.backbone.layers.24.mlp.fc1": {
+        "aten.addmm": 5586812928
+      },
+      "Sam3Model.vision_encoder.backbone.layers.24.mlp": {
+        "aten.addmm": 11173625856
+      },
+      "Sam3Model.vision_encoder.backbone.layers.24.mlp.fc2": {
+        "aten.addmm": 5586812928
+      },
+      "Sam3Model.vision_encoder.backbone.layers.25.attention.q_proj": {
+        "aten.addmm": 1207959552
+      },
+      "Sam3Model.vision_encoder.backbone.layers.25.attention": {
+        "aten.addmm": 4831838208,
+        "aten._scaled_dot_product_flash_attention": 1358954496
+      },
+      "Sam3Model.vision_encoder.backbone.layers.25": {
+        "aten.addmm": 16005464064,
+        "aten._scaled_dot_product_flash_attention": 1358954496
+      },
+      "Sam3Model.vision_encoder.backbone.layers.25.attention.k_proj": {
+        "aten.addmm": 1207959552
+      },
+      "Sam3Model.vision_encoder.backbone.layers.25.attention.v_proj": {
+        "aten.addmm": 1207959552
+      },
+      "Sam3Model.vision_encoder.backbone.layers.25.attention.o_proj": {
+        "aten.addmm": 1207959552
+      },
+      "Sam3Model.vision_encoder.backbone.layers.25.mlp.fc1": {
+        "aten.addmm": 5586812928
+      },
+      "Sam3Model.vision_encoder.backbone.layers.25.mlp": {
+        "aten.addmm": 11173625856
+      },
+      "Sam3Model.vision_encoder.backbone.layers.25.mlp.fc2": {
+        "aten.addmm": 5586812928
+      },
+      "Sam3Model.vision_encoder.backbone.layers.26.attention": {
+        "aten.addmm": 4831838208,
+        "aten._scaled_dot_product_flash_attention": 1358954496
+      },
+      "Sam3Model.vision_encoder.backbone.layers.26.attention.q_proj": {
+        "aten.addmm": 1207959552
+      },
+      "Sam3Model.vision_encoder.backbone.layers.26": {
+        "aten.addmm": 16005464064,
+        "aten._scaled_dot_product_flash_attention": 1358954496
+      },
+      "Sam3Model.vision_encoder.backbone.layers.26.attention.k_proj": {
+        "aten.addmm": 1207959552
+      },
+      "Sam3Model.vision_encoder.backbone.layers.26.attention.v_proj": {
+        "aten.addmm": 1207959552
+      },
+      "Sam3Model.vision_encoder.backbone.layers.26.attention.o_proj": {
+        "aten.addmm": 1207959552
+      },
+      "Sam3Model.vision_encoder.backbone.layers.26.mlp.fc1": {
+        "aten.addmm": 5586812928
+      },
+      "Sam3Model.vision_encoder.backbone.layers.26.mlp": {
+        "aten.addmm": 11173625856
+      },
+      "Sam3Model.vision_encoder.backbone.layers.26.mlp.fc2": {
+        "aten.addmm": 5586812928
+      },
+      "Sam3Model.vision_encoder.backbone.layers.27.attention.q_proj": {
+        "aten.addmm": 1207959552
+      },
+      "Sam3Model.vision_encoder.backbone.layers.27.attention": {
+        "aten.addmm": 4831838208,
+        "aten._scaled_dot_product_flash_attention": 1358954496
+      },
+      "Sam3Model.vision_encoder.backbone.layers.27": {
+        "aten.addmm": 16005464064,
+        "aten._scaled_dot_product_flash_attention": 1358954496
+      },
+      "Sam3Model.vision_encoder.backbone.layers.27.attention.k_proj": {
+        "aten.addmm": 1207959552
+      },
+      "Sam3Model.vision_encoder.backbone.layers.27.attention.v_proj": {
+        "aten.addmm": 1207959552
+      },
+      "Sam3Model.vision_encoder.backbone.layers.27.attention.o_proj": {
+        "aten.addmm": 1207959552
+      },
+      "Sam3Model.vision_encoder.backbone.layers.27.mlp": {
+        "aten.addmm": 11173625856
+      },
+      "Sam3Model.vision_encoder.backbone.layers.27.mlp.fc1": {
+        "aten.addmm": 5586812928
+      },
+      "Sam3Model.vision_encoder.backbone.layers.27.mlp.fc2": {
+        "aten.addmm": 5586812928
+      },
+      "Sam3Model.vision_encoder.backbone.layers.28": {
+        "aten.addmm": 16005464064,
+        "aten._scaled_dot_product_flash_attention": 1358954496
+      },
+      "Sam3Model.vision_encoder.backbone.layers.28.attention": {
+        "aten.addmm": 4831838208,
+        "aten._scaled_dot_product_flash_attention": 1358954496
+      },
+      "Sam3Model.vision_encoder.backbone.layers.28.attention.q_proj": {
+        "aten.addmm": 1207959552
+      },
+      "Sam3Model.vision_encoder.backbone.layers.28.attention.k_proj": {
+        "aten.addmm": 1207959552
+      },
+      "Sam3Model.vision_encoder.backbone.layers.28.attention.v_proj": {
+        "aten.addmm": 1207959552
+      },
+      "Sam3Model.vision_encoder.backbone.layers.28.attention.o_proj": {
+        "aten.addmm": 1207959552
+      },
+      "Sam3Model.vision_encoder.backbone.layers.28.mlp.fc1": {
+        "aten.addmm": 5586812928
+      },
+      "Sam3Model.vision_encoder.backbone.layers.28.mlp": {
+        "aten.addmm": 11173625856
+      },
+      "Sam3Model.vision_encoder.backbone.layers.28.mlp.fc2": {
+        "aten.addmm": 5586812928
+      },
+      "Sam3Model.vision_encoder.backbone.layers.29": {
+        "aten.addmm": 16005464064,
+        "aten._scaled_dot_product_flash_attention": 1358954496
+      },
+      "Sam3Model.vision_encoder.backbone.layers.29.attention": {
+        "aten.addmm": 4831838208,
+        "aten._scaled_dot_product_flash_attention": 1358954496
+      },
+      "Sam3Model.vision_encoder.backbone.layers.29.attention.q_proj": {
+        "aten.addmm": 1207959552
+      },
+      "Sam3Model.vision_encoder.backbone.layers.29.attention.k_proj": {
+        "aten.addmm": 1207959552
+      },
+      "Sam3Model.vision_encoder.backbone.layers.29.attention.v_proj": {
+        "aten.addmm": 1207959552
+      },
+      "Sam3Model.vision_encoder.backbone.layers.29.attention.o_proj": {
+        "aten.addmm": 1207959552
+      },
+      "Sam3Model.vision_encoder.backbone.layers.29.mlp.fc1": {
+        "aten.addmm": 5586812928
+      },
+      "Sam3Model.vision_encoder.backbone.layers.29.mlp": {
+        "aten.addmm": 11173625856
+      },
+      "Sam3Model.vision_encoder.backbone.layers.29.mlp.fc2": {
+        "aten.addmm": 5586812928
+      },
+      "Sam3Model.vision_encoder.backbone.layers.30.attention": {
+        "aten.addmm": 4831838208,
+        "aten._scaled_dot_product_flash_attention": 1358954496
+      },
+      "Sam3Model.vision_encoder.backbone.layers.30.attention.q_proj": {
+        "aten.addmm": 1207959552
+      },
+      "Sam3Model.vision_encoder.backbone.layers.30": {
+        "aten.addmm": 16005464064,
+        "aten._scaled_dot_product_flash_attention": 1358954496
+      },
+      "Sam3Model.vision_encoder.backbone.layers.30.attention.k_proj": {
+        "aten.addmm": 1207959552
+      },
+      "Sam3Model.vision_encoder.backbone.layers.30.attention.v_proj": {
+        "aten.addmm": 1207959552
+      },
+      "Sam3Model.vision_encoder.backbone.layers.30.attention.o_proj": {
+        "aten.addmm": 1207959552
+      },
+      "Sam3Model.vision_encoder.backbone.layers.30.mlp.fc1": {
+        "aten.addmm": 5586812928
+      },
+      "Sam3Model.vision_encoder.backbone.layers.30.mlp": {
+        "aten.addmm": 11173625856
+      },
+      "Sam3Model.vision_encoder.backbone.layers.30.mlp.fc2": {
+        "aten.addmm": 5586812928
+      },
+      "Sam3Model.vision_encoder.backbone.layers.31.attention.q_proj": {
+        "aten.addmm": 1207959552
+      },
+      "Sam3Model.vision_encoder.backbone.layers.31.attention": {
+        "aten.addmm": 4831838208,
+        "aten._scaled_dot_product_flash_attention": 1358954496
+      },
+      "Sam3Model.vision_encoder.backbone.layers.31": {
+        "aten.addmm": 16005464064,
+        "aten._scaled_dot_product_flash_attention": 1358954496
+      },
+      "Sam3Model.vision_encoder.backbone.layers.31.attention.k_proj": {
+        "aten.addmm": 1207959552
+      },
+      "Sam3Model.vision_encoder.backbone.layers.31.attention.v_proj": {
+        "aten.addmm": 1207959552
+      },
+      "Sam3Model.vision_encoder.backbone.layers.31.attention.o_proj": {
+        "aten.addmm": 1207959552
+      },
+      "Sam3Model.vision_encoder.backbone.layers.31.mlp": {
+        "aten.addmm": 11173625856
+      },
+      "Sam3Model.vision_encoder.backbone.layers.31.mlp.fc1": {
+        "aten.addmm": 5586812928
+      },
+      "Sam3Model.vision_encoder.backbone.layers.31.mlp.fc2": {
+        "aten.addmm": 5586812928
+      },
+      "Sam3Model.vision_encoder.neck.fpn_layers.0.scale_layers.0": {
+        "aten.convolution": 2415919104
+      },
+      "Sam3Model.vision_encoder.neck.fpn_layers.0": {
+        "aten.convolution": 16911433728
+      },
+      "Sam3Model.vision_encoder.neck": {
+        "aten.convolution": 23876075520
+      },
+      "Sam3Model.vision_encoder.neck.fpn_layers.0.scale_layers.2": {
+        "aten.convolution": 2415919104
+      },
+      "Sam3Model.vision_encoder.neck.fpn_layers.0.proj1": {
+        "aten.convolution": 1207959552
+      },
+      "Sam3Model.vision_encoder.neck.fpn_layers.0.proj2": {
+        "aten.convolution": 10871635968
+      },
+      "Sam3Model.vision_encoder.neck.fpn_layers.1": {
+        "aten.convolution": 5737807872
+      },
+      "Sam3Model.vision_encoder.neck.fpn_layers.1.scale_layers.0": {
+        "aten.convolution": 2415919104
+      },
+      "Sam3Model.vision_encoder.neck.fpn_layers.1.proj1": {
+        "aten.convolution": 603979776
+      },
+      "Sam3Model.vision_encoder.neck.fpn_layers.1.proj2": {
+        "aten.convolution": 2717908992
+      },
+      "Sam3Model.vision_encoder.neck.fpn_layers.2.proj1": {
+        "aten.convolution": 301989888
+      },
+      "Sam3Model.vision_encoder.neck.fpn_layers.2": {
+        "aten.convolution": 981467136
+      },
+      "Sam3Model.vision_encoder.neck.fpn_layers.2.proj2": {
+        "aten.convolution": 679477248
+      },
+      "Sam3Model.vision_encoder.neck.fpn_layers.3.proj1": {
+        "aten.convolution": 75497472
+      },
+      "Sam3Model.vision_encoder.neck.fpn_layers.3": {
+        "aten.convolution": 245366784
+      },
+      "Sam3Model.vision_encoder.neck.fpn_layers.3.proj2": {
+        "aten.convolution": 169869312
+      },
+      "Sam3Model.detr_encoder.layers.0.self_attn": {
+        "aten.addmm": 301989888,
+        "aten._scaled_dot_product_flash_attention": 339738624
+      },
+      "Sam3Model.detr_encoder.layers.0": {
+        "aten.addmm": 1669332992,
+        "aten._scaled_dot_product_flash_attention": 339738624,
+        "aten._scaled_dot_product_efficient_attention": 18874368
+      },
+      "Sam3Model.detr_encoder": {
+        "aten.addmm": 10015997952,
+        "aten._scaled_dot_product_flash_attention": 2038431744,
+        "aten._scaled_dot_product_efficient_attention": 113246208
+      },
+      "Sam3Model.detr_encoder.layers.0.self_attn.q_proj": {
+        "aten.addmm": 75497472
+      },
+      "Sam3Model.detr_encoder.layers.0.self_attn.k_proj": {
+        "aten.addmm": 75497472
+      },
+      "Sam3Model.detr_encoder.layers.0.self_attn.v_proj": {
+        "aten.addmm": 75497472
+      },
+      "Sam3Model.detr_encoder.layers.0.self_attn.o_proj": {
+        "aten.addmm": 75497472
+      },
+      "Sam3Model.detr_encoder.layers.0.cross_attn": {
+        "aten.addmm": 159383552,
+        "aten._scaled_dot_product_efficient_attention": 18874368
+      },
+      "Sam3Model.detr_encoder.layers.0.cross_attn.q_proj": {
+        "aten.addmm": 75497472
+      },
+      "Sam3Model.detr_encoder.layers.0.cross_attn.k_proj": {
+        "aten.addmm": 4194304
+      },
+      "Sam3Model.detr_encoder.layers.0.cross_attn.v_proj": {
+        "aten.addmm": 4194304
+      },
+      "Sam3Model.detr_encoder.layers.0.cross_attn.o_proj": {
+        "aten.addmm": 75497472
+      },
+      "Sam3Model.detr_encoder.layers.0.mlp": {
+        "aten.addmm": 1207959552
+      },
+      "Sam3Model.detr_encoder.layers.0.mlp.fc1": {
+        "aten.addmm": 603979776
+      },
+      "Sam3Model.detr_encoder.layers.0.mlp.fc2": {
+        "aten.addmm": 603979776
+      },
+      "Sam3Model.detr_encoder.layers.1.self_attn.q_proj": {
+        "aten.addmm": 75497472
+      },
+      "Sam3Model.detr_encoder.layers.1.self_attn": {
+        "aten.addmm": 301989888,
+        "aten._scaled_dot_product_flash_attention": 339738624
+      },
+      "Sam3Model.detr_encoder.layers.1": {
+        "aten.addmm": 1669332992,
+        "aten._scaled_dot_product_flash_attention": 339738624,
+        "aten._scaled_dot_product_efficient_attention": 18874368
+      },
+      "Sam3Model.detr_encoder.layers.1.self_attn.k_proj": {
+        "aten.addmm": 75497472
+      },
+      "Sam3Model.detr_encoder.layers.1.self_attn.v_proj": {
+        "aten.addmm": 75497472
+      },
+      "Sam3Model.detr_encoder.layers.1.self_attn.o_proj": {
+        "aten.addmm": 75497472
+      },
+      "Sam3Model.detr_encoder.layers.1.cross_attn.q_proj": {
+        "aten.addmm": 75497472
+      },
+      "Sam3Model.detr_encoder.layers.1.cross_attn": {
+        "aten.addmm": 159383552,
+        "aten._scaled_dot_product_efficient_attention": 18874368
+      },
+      "Sam3Model.detr_encoder.layers.1.cross_attn.k_proj": {
+        "aten.addmm": 4194304
+      },
+      "Sam3Model.detr_encoder.layers.1.cross_attn.v_proj": {
+        "aten.addmm": 4194304
+      },
+      "Sam3Model.detr_encoder.layers.1.cross_attn.o_proj": {
+        "aten.addmm": 75497472
+      },
+      "Sam3Model.detr_encoder.layers.1.mlp": {
+        "aten.addmm": 1207959552
+      },
+      "Sam3Model.detr_encoder.layers.1.mlp.fc1": {
+        "aten.addmm": 603979776
+      },
+      "Sam3Model.detr_encoder.layers.1.mlp.fc2": {
+        "aten.addmm": 603979776
+      },
+      "Sam3Model.detr_encoder.layers.2.self_attn": {
+        "aten.addmm": 301989888,
+        "aten._scaled_dot_product_flash_attention": 339738624
+      },
+      "Sam3Model.detr_encoder.layers.2.self_attn.q_proj": {
+        "aten.addmm": 75497472
+      },
+      "Sam3Model.detr_encoder.layers.2": {
+        "aten.addmm": 1669332992,
+        "aten._scaled_dot_product_flash_attention": 339738624,
+        "aten._scaled_dot_product_efficient_attention": 18874368
+      },
+      "Sam3Model.detr_encoder.layers.2.self_attn.k_proj": {
+        "aten.addmm": 75497472
+      },
+      "Sam3Model.detr_encoder.layers.2.self_attn.v_proj": {
+        "aten.addmm": 75497472
+      },
+      "Sam3Model.detr_encoder.layers.2.self_attn.o_proj": {
+        "aten.addmm": 75497472
+      },
+      "Sam3Model.detr_encoder.layers.2.cross_attn.q_proj": {
+        "aten.addmm": 75497472
+      },
+      "Sam3Model.detr_encoder.layers.2.cross_attn": {
+        "aten.addmm": 159383552,
+        "aten._scaled_dot_product_efficient_attention": 18874368
+      },
+      "Sam3Model.detr_encoder.layers.2.cross_attn.k_proj": {
+        "aten.addmm": 4194304
+      },
+      "Sam3Model.detr_encoder.layers.2.cross_attn.v_proj": {
+        "aten.addmm": 4194304
+      },
+      "Sam3Model.detr_encoder.layers.2.cross_attn.o_proj": {
+        "aten.addmm": 75497472
+      },
+      "Sam3Model.detr_encoder.layers.2.mlp": {
+        "aten.addmm": 1207959552
+      },
+      "Sam3Model.detr_encoder.layers.2.mlp.fc1": {
+        "aten.addmm": 603979776
+      },
+      "Sam3Model.detr_encoder.layers.2.mlp.fc2": {
+        "aten.addmm": 603979776
+      },
+      "Sam3Model.detr_encoder.layers.3": {
+        "aten.addmm": 1669332992,
+        "aten._scaled_dot_product_flash_attention": 339738624,
+        "aten._scaled_dot_product_efficient_attention": 18874368
+      },
+      "Sam3Model.detr_encoder.layers.3.self_attn.q_proj": {
+        "aten.addmm": 75497472
+      },
+      "Sam3Model.detr_encoder.layers.3.self_attn": {
+        "aten.addmm": 301989888,
+        "aten._scaled_dot_product_flash_attention": 339738624
+      },
+      "Sam3Model.detr_encoder.layers.3.self_attn.k_proj": {
+        "aten.addmm": 75497472
+      },
+      "Sam3Model.detr_encoder.layers.3.self_attn.v_proj": {
+        "aten.addmm": 75497472
+      },
+      "Sam3Model.detr_encoder.layers.3.self_attn.o_proj": {
+        "aten.addmm": 75497472
+      },
+      "Sam3Model.detr_encoder.layers.3.cross_attn.q_proj": {
+        "aten.addmm": 75497472
+      },
+      "Sam3Model.detr_encoder.layers.3.cross_attn": {
+        "aten.addmm": 159383552,
+        "aten._scaled_dot_product_efficient_attention": 18874368
+      },
+      "Sam3Model.detr_encoder.layers.3.cross_attn.k_proj": {
+        "aten.addmm": 4194304
+      },
+      "Sam3Model.detr_encoder.layers.3.cross_attn.v_proj": {
+        "aten.addmm": 4194304
+      },
+      "Sam3Model.detr_encoder.layers.3.cross_attn.o_proj": {
+        "aten.addmm": 75497472
+      },
+      "Sam3Model.detr_encoder.layers.3.mlp.fc1": {
+        "aten.addmm": 603979776
+      },
+      "Sam3Model.detr_encoder.layers.3.mlp": {
+        "aten.addmm": 1207959552
+      },
+      "Sam3Model.detr_encoder.layers.3.mlp.fc2": {
+        "aten.addmm": 603979776
+      },
+      "Sam3Model.detr_encoder.layers.4.self_attn": {
+        "aten.addmm": 301989888,
+        "aten._scaled_dot_product_flash_attention": 339738624
+      },
+      "Sam3Model.detr_encoder.layers.4": {
+        "aten.addmm": 1669332992,
+        "aten._scaled_dot_product_flash_attention": 339738624,
+        "aten._scaled_dot_product_efficient_attention": 18874368
+      },
+      "Sam3Model.detr_encoder.layers.4.self_attn.q_proj": {
+        "aten.addmm": 75497472
+      },
+      "Sam3Model.detr_encoder.layers.4.self_attn.k_proj": {
+        "aten.addmm": 75497472
+      },
+      "Sam3Model.detr_encoder.layers.4.self_attn.v_proj": {
+        "aten.addmm": 75497472
+      },
+      "Sam3Model.detr_encoder.layers.4.self_attn.o_proj": {
+        "aten.addmm": 75497472
+      },
+      "Sam3Model.detr_encoder.layers.4.cross_attn.q_proj": {
+        "aten.addmm": 75497472
+      },
+      "Sam3Model.detr_encoder.layers.4.cross_attn": {
+        "aten.addmm": 159383552,
+        "aten._scaled_dot_product_efficient_attention": 18874368
+      },
+      "Sam3Model.detr_encoder.layers.4.cross_attn.k_proj": {
+        "aten.addmm": 4194304
+      },
+      "Sam3Model.detr_encoder.layers.4.cross_attn.v_proj": {
+        "aten.addmm": 4194304
+      },
+      "Sam3Model.detr_encoder.layers.4.cross_attn.o_proj": {
+        "aten.addmm": 75497472
+      },
+      "Sam3Model.detr_encoder.layers.4.mlp": {
+        "aten.addmm": 1207959552
+      },
+      "Sam3Model.detr_encoder.layers.4.mlp.fc1": {
+        "aten.addmm": 603979776
+      },
+      "Sam3Model.detr_encoder.layers.4.mlp.fc2": {
+        "aten.addmm": 603979776
+      },
+      "Sam3Model.detr_encoder.layers.5.self_attn": {
+        "aten.addmm": 301989888,
+        "aten._scaled_dot_product_flash_attention": 339738624
+      },
+      "Sam3Model.detr_encoder.layers.5.self_attn.q_proj": {
+        "aten.addmm": 75497472
+      },
+      "Sam3Model.detr_encoder.layers.5": {
+        "aten.addmm": 1669332992,
+        "aten._scaled_dot_product_flash_attention": 339738624,
+        "aten._scaled_dot_product_efficient_attention": 18874368
+      },
+      "Sam3Model.detr_encoder.layers.5.self_attn.k_proj": {
+        "aten.addmm": 75497472
+      },
+      "Sam3Model.detr_encoder.layers.5.self_attn.v_proj": {
+        "aten.addmm": 75497472
+      },
+      "Sam3Model.detr_encoder.layers.5.self_attn.o_proj": {
+        "aten.addmm": 75497472
+      },
+      "Sam3Model.detr_encoder.layers.5.cross_attn": {
+        "aten.addmm": 159383552,
+        "aten._scaled_dot_product_efficient_attention": 18874368
+      },
+      "Sam3Model.detr_encoder.layers.5.cross_attn.q_proj": {
+        "aten.addmm": 75497472
+      },
+      "Sam3Model.detr_encoder.layers.5.cross_attn.k_proj": {
+        "aten.addmm": 4194304
+      },
+      "Sam3Model.detr_encoder.layers.5.cross_attn.v_proj": {
+        "aten.addmm": 4194304
+      },
+      "Sam3Model.detr_encoder.layers.5.cross_attn.o_proj": {
+        "aten.addmm": 75497472
+      },
+      "Sam3Model.detr_encoder.layers.5.mlp.fc1": {
+        "aten.addmm": 603979776
+      },
+      "Sam3Model.detr_encoder.layers.5.mlp": {
+        "aten.addmm": 1207959552
+      },
+      "Sam3Model.detr_encoder.layers.5.mlp.fc2": {
+        "aten.addmm": 603979776
+      },
+      "Sam3Model.detr_decoder.ref_point_head": {
+        "aten.addmm": 471859200
+      },
+      "Sam3Model.detr_decoder": {
+        "aten.addmm": 5835426816,
+        "aten._scaled_dot_product_flash_attention": 248223744,
+        "aten._scaled_dot_product_efficient_attention": 750845952
+      },
+      "Sam3Model.detr_decoder.ref_point_head.layer1": {
+        "aten.addmm": 314572800
+      },
+      "Sam3Model.detr_decoder.ref_point_head.layer2": {
+        "aten.addmm": 157286400
+      },
+      "Sam3Model.detr_decoder.box_rpb_embed_x.layer1": {
+        "aten.addmm": 29491200
+      },
+      "Sam3Model.detr_decoder.box_rpb_embed_x": {
+        "aten.addmm": 147456000
+      },
+      "Sam3Model.detr_decoder.box_rpb_embed_x.layer2": {
+        "aten.addmm": 117964800
+      },
+      "Sam3Model.detr_decoder.box_rpb_embed_y": {
+        "aten.addmm": 147456000
+      },
+      "Sam3Model.detr_decoder.box_rpb_embed_y.layer1": {
+        "aten.addmm": 29491200
+      },
+      "Sam3Model.detr_decoder.box_rpb_embed_y.layer2": {
+        "aten.addmm": 117964800
+      },
+      "Sam3Model.detr_decoder.layers.0.self_attn": {
+        "aten.addmm": 105381888,
+        "aten._scaled_dot_product_flash_attention": 41370624
+      },
+      "Sam3Model.detr_decoder.layers.0.self_attn.q_proj": {
+        "aten.addmm": 26345472
+      },
+      "Sam3Model.detr_decoder.layers.0": {
+        "aten.addmm": 791674880,
+        "aten._scaled_dot_product_flash_attention": 41370624,
+        "aten._scaled_dot_product_efficient_attention": 125140992
+      },
+      "Sam3Model.detr_decoder.layers.0.self_attn.k_proj": {
+        "aten.addmm": 26345472
+      },
+      "Sam3Model.detr_decoder.layers.0.self_attn.v_proj": {
+        "aten.addmm": 26345472
+      },
+      "Sam3Model.detr_decoder.layers.0.self_attn.o_proj": {
+        "aten.addmm": 26345472
+      },
+      "Sam3Model.detr_decoder.layers.0.text_cross_attn.q_proj": {
+        "aten.addmm": 26345472
+      },
+      "Sam3Model.detr_decoder.layers.0.text_cross_attn": {
+        "aten.addmm": 61079552,
+        "aten._scaled_dot_product_efficient_attention": 6586368
+      },
+      "Sam3Model.detr_decoder.layers.0.text_cross_attn.k_proj": {
+        "aten.addmm": 4194304
+      },
+      "Sam3Model.detr_decoder.layers.0.text_cross_attn.v_proj": {
+        "aten.addmm": 4194304
+      },
+      "Sam3Model.detr_decoder.layers.0.text_cross_attn.o_proj": {
+        "aten.addmm": 26345472
+      },
+      "Sam3Model.detr_decoder.layers.0.vision_cross_attn": {
+        "aten.addmm": 203685888,
+        "aten._scaled_dot_product_efficient_attention": 118554624
+      },
+      "Sam3Model.detr_decoder.layers.0.vision_cross_attn.q_proj": {
+        "aten.addmm": 26345472
+      },
+      "Sam3Model.detr_decoder.layers.0.vision_cross_attn.k_proj": {
+        "aten.addmm": 75497472
+      },
+      "Sam3Model.detr_decoder.layers.0.vision_cross_attn.v_proj": {
+        "aten.addmm": 75497472
+      },
+      "Sam3Model.detr_decoder.layers.0.vision_cross_attn.o_proj": {
+        "aten.addmm": 26345472
+      },
+      "Sam3Model.detr_decoder.layers.0.mlp.fc1": {
+        "aten.addmm": 210763776
+      },
+      "Sam3Model.detr_decoder.layers.0.mlp": {
+        "aten.addmm": 421527552
+      },
+      "Sam3Model.detr_decoder.layers.0.mlp.fc2": {
+        "aten.addmm": 210763776
+      },
+      "Sam3Model.detr_decoder.box_head": {
+        "aten.addmm": 634060800
+      },
+      "Sam3Model.detr_decoder.box_head.layer1": {
+        "aten.addmm": 314572800
+      },
+      "Sam3Model.detr_decoder.box_head.layer2": {
+        "aten.addmm": 314572800
+      },
+      "Sam3Model.detr_decoder.box_head.layer3": {
+        "aten.addmm": 4915200
+      },
+      "Sam3Model.detr_decoder.presence_head.layer1": {
+        "aten.addmm": 786432
+      },
+      "Sam3Model.detr_decoder.presence_head": {
+        "aten.addmm": 1575936
+      },
+      "Sam3Model.detr_decoder.presence_head.layer2": {
+        "aten.addmm": 786432
+      },
+      "Sam3Model.detr_decoder.presence_head.layer3": {
+        "aten.addmm": 3072
+      },
+      "Sam3Model.detr_decoder.layers.1.self_attn": {
+        "aten.addmm": 105381888,
+        "aten._scaled_dot_product_flash_attention": 41370624
+      },
+      "Sam3Model.detr_decoder.layers.1": {
+        "aten.addmm": 791674880,
+        "aten._scaled_dot_product_flash_attention": 41370624,
+        "aten._scaled_dot_product_efficient_attention": 125140992
+      },
+      "Sam3Model.detr_decoder.layers.1.self_attn.q_proj": {
+        "aten.addmm": 26345472
+      },
+      "Sam3Model.detr_decoder.layers.1.self_attn.k_proj": {
+        "aten.addmm": 26345472
+      },
+      "Sam3Model.detr_decoder.layers.1.self_attn.v_proj": {
+        "aten.addmm": 26345472
+      },
+      "Sam3Model.detr_decoder.layers.1.self_attn.o_proj": {
+        "aten.addmm": 26345472
+      },
+      "Sam3Model.detr_decoder.layers.1.text_cross_attn": {
+        "aten.addmm": 61079552,
+        "aten._scaled_dot_product_efficient_attention": 6586368
+      },
+      "Sam3Model.detr_decoder.layers.1.text_cross_attn.q_proj": {
+        "aten.addmm": 26345472
+      },
+      "Sam3Model.detr_decoder.layers.1.text_cross_attn.k_proj": {
+        "aten.addmm": 4194304
+      },
+      "Sam3Model.detr_decoder.layers.1.text_cross_attn.v_proj": {
+        "aten.addmm": 4194304
+      },
+      "Sam3Model.detr_decoder.layers.1.text_cross_attn.o_proj": {
+        "aten.addmm": 26345472
+      },
+      "Sam3Model.detr_decoder.layers.1.vision_cross_attn.q_proj": {
+        "aten.addmm": 26345472
+      },
+      "Sam3Model.detr_decoder.layers.1.vision_cross_attn": {
+        "aten.addmm": 203685888,
+        "aten._scaled_dot_product_efficient_attention": 118554624
+      },
+      "Sam3Model.detr_decoder.layers.1.vision_cross_attn.k_proj": {
+        "aten.addmm": 75497472
+      },
+      "Sam3Model.detr_decoder.layers.1.vision_cross_attn.v_proj": {
+        "aten.addmm": 75497472
+      },
+      "Sam3Model.detr_decoder.layers.1.vision_cross_attn.o_proj": {
+        "aten.addmm": 26345472
+      },
+      "Sam3Model.detr_decoder.layers.1.mlp": {
+        "aten.addmm": 421527552
+      },
+      "Sam3Model.detr_decoder.layers.1.mlp.fc1": {
+        "aten.addmm": 210763776
+      },
+      "Sam3Model.detr_decoder.layers.1.mlp.fc2": {
+        "aten.addmm": 210763776
+      },
+      "Sam3Model.detr_decoder.layers.2": {
+        "aten.addmm": 791674880,
+        "aten._scaled_dot_product_flash_attention": 41370624,
+        "aten._scaled_dot_product_efficient_attention": 125140992
+      },
+      "Sam3Model.detr_decoder.layers.2.self_attn.q_proj": {
+        "aten.addmm": 26345472
+      },
+      "Sam3Model.detr_decoder.layers.2.self_attn": {
+        "aten.addmm": 105381888,
+        "aten._scaled_dot_product_flash_attention": 41370624
+      },
+      "Sam3Model.detr_decoder.layers.2.self_attn.k_proj": {
+        "aten.addmm": 26345472
+      },
+      "Sam3Model.detr_decoder.layers.2.self_attn.v_proj": {
+        "aten.addmm": 26345472
+      },
+      "Sam3Model.detr_decoder.layers.2.self_attn.o_proj": {
+        "aten.addmm": 26345472
+      },
+      "Sam3Model.detr_decoder.layers.2.text_cross_attn": {
+        "aten.addmm": 61079552,
+        "aten._scaled_dot_product_efficient_attention": 6586368
+      },
+      "Sam3Model.detr_decoder.layers.2.text_cross_attn.q_proj": {
+        "aten.addmm": 26345472
+      },
+      "Sam3Model.detr_decoder.layers.2.text_cross_attn.k_proj": {
+        "aten.addmm": 4194304
+      },
+      "Sam3Model.detr_decoder.layers.2.text_cross_attn.v_proj": {
+        "aten.addmm": 4194304
+      },
+      "Sam3Model.detr_decoder.layers.2.text_cross_attn.o_proj": {
+        "aten.addmm": 26345472
+      },
+      "Sam3Model.detr_decoder.layers.2.vision_cross_attn.q_proj": {
+        "aten.addmm": 26345472
+      },
+      "Sam3Model.detr_decoder.layers.2.vision_cross_attn": {
+        "aten.addmm": 203685888,
+        "aten._scaled_dot_product_efficient_attention": 118554624
+      },
+      "Sam3Model.detr_decoder.layers.2.vision_cross_attn.k_proj": {
+        "aten.addmm": 75497472
+      },
+      "Sam3Model.detr_decoder.layers.2.vision_cross_attn.v_proj": {
+        "aten.addmm": 75497472
+      },
+      "Sam3Model.detr_decoder.layers.2.vision_cross_attn.o_proj": {
+        "aten.addmm": 26345472
+      },
+      "Sam3Model.detr_decoder.layers.2.mlp": {
+        "aten.addmm": 421527552
+      },
+      "Sam3Model.detr_decoder.layers.2.mlp.fc1": {
+        "aten.addmm": 210763776
+      },
+      "Sam3Model.detr_decoder.layers.2.mlp.fc2": {
+        "aten.addmm": 210763776
+      },
+      "Sam3Model.detr_decoder.layers.3.self_attn": {
+        "aten.addmm": 105381888,
+        "aten._scaled_dot_product_flash_attention": 41370624
+      },
+      "Sam3Model.detr_decoder.layers.3": {
+        "aten.addmm": 791674880,
+        "aten._scaled_dot_product_flash_attention": 41370624,
+        "aten._scaled_dot_product_efficient_attention": 125140992
+      },
+      "Sam3Model.detr_decoder.layers.3.self_attn.q_proj": {
+        "aten.addmm": 26345472
+      },
+      "Sam3Model.detr_decoder.layers.3.self_attn.k_proj": {
+        "aten.addmm": 26345472
+      },
+      "Sam3Model.detr_decoder.layers.3.self_attn.v_proj": {
+        "aten.addmm": 26345472
+      },
+      "Sam3Model.detr_decoder.layers.3.self_attn.o_proj": {
+        "aten.addmm": 26345472
+      },
+      "Sam3Model.detr_decoder.layers.3.text_cross_attn.q_proj": {
+        "aten.addmm": 26345472
+      },
+      "Sam3Model.detr_decoder.layers.3.text_cross_attn": {
+        "aten.addmm": 61079552,
+        "aten._scaled_dot_product_efficient_attention": 6586368
+      },
+      "Sam3Model.detr_decoder.layers.3.text_cross_attn.k_proj": {
+        "aten.addmm": 4194304
+      },
+      "Sam3Model.detr_decoder.layers.3.text_cross_attn.v_proj": {
+        "aten.addmm": 4194304
+      },
+      "Sam3Model.detr_decoder.layers.3.text_cross_attn.o_proj": {
+        "aten.addmm": 26345472
+      },
+      "Sam3Model.detr_decoder.layers.3.vision_cross_attn.q_proj": {
+        "aten.addmm": 26345472
+      },
+      "Sam3Model.detr_decoder.layers.3.vision_cross_attn": {
+        "aten.addmm": 203685888,
+        "aten._scaled_dot_product_efficient_attention": 118554624
+      },
+      "Sam3Model.detr_decoder.layers.3.vision_cross_attn.k_proj": {
+        "aten.addmm": 75497472
+      },
+      "Sam3Model.detr_decoder.layers.3.vision_cross_attn.v_proj": {
+        "aten.addmm": 75497472
+      },
+      "Sam3Model.detr_decoder.layers.3.vision_cross_attn.o_proj": {
+        "aten.addmm": 26345472
+      },
+      "Sam3Model.detr_decoder.layers.3.mlp": {
+        "aten.addmm": 421527552
+      },
+      "Sam3Model.detr_decoder.layers.3.mlp.fc1": {
+        "aten.addmm": 210763776
+      },
+      "Sam3Model.detr_decoder.layers.3.mlp.fc2": {
+        "aten.addmm": 210763776
+      },
+      "Sam3Model.detr_decoder.layers.4.self_attn": {
+        "aten.addmm": 105381888,
+        "aten._scaled_dot_product_flash_attention": 41370624
+      },
+      "Sam3Model.detr_decoder.layers.4": {
+        "aten.addmm": 791674880,
+        "aten._scaled_dot_product_flash_attention": 41370624,
+        "aten._scaled_dot_product_efficient_attention": 125140992
+      },
+      "Sam3Model.detr_decoder.layers.4.self_attn.q_proj": {
+        "aten.addmm": 26345472
+      },
+      "Sam3Model.detr_decoder.layers.4.self_attn.k_proj": {
+        "aten.addmm": 26345472
+      },
+      "Sam3Model.detr_decoder.layers.4.self_attn.v_proj": {
+        "aten.addmm": 26345472
+      },
+      "Sam3Model.detr_decoder.layers.4.self_attn.o_proj": {
+        "aten.addmm": 26345472
+      },
+      "Sam3Model.detr_decoder.layers.4.text_cross_attn.q_proj": {
+        "aten.addmm": 26345472
+      },
+      "Sam3Model.detr_decoder.layers.4.text_cross_attn": {
+        "aten.addmm": 61079552,
+        "aten._scaled_dot_product_efficient_attention": 6586368
+      },
+      "Sam3Model.detr_decoder.layers.4.text_cross_attn.k_proj": {
+        "aten.addmm": 4194304
+      },
+      "Sam3Model.detr_decoder.layers.4.text_cross_attn.v_proj": {
+        "aten.addmm": 4194304
+      },
+      "Sam3Model.detr_decoder.layers.4.text_cross_attn.o_proj": {
+        "aten.addmm": 26345472
+      },
+      "Sam3Model.detr_decoder.layers.4.vision_cross_attn": {
+        "aten.addmm": 203685888,
+        "aten._scaled_dot_product_efficient_attention": 118554624
+      },
+      "Sam3Model.detr_decoder.layers.4.vision_cross_attn.q_proj": {
+        "aten.addmm": 26345472
+      },
+      "Sam3Model.detr_decoder.layers.4.vision_cross_attn.k_proj": {
+        "aten.addmm": 75497472
+      },
+      "Sam3Model.detr_decoder.layers.4.vision_cross_attn.v_proj": {
+        "aten.addmm": 75497472
+      },
+      "Sam3Model.detr_decoder.layers.4.vision_cross_attn.o_proj": {
+        "aten.addmm": 26345472
+      },
+      "Sam3Model.detr_decoder.layers.4.mlp.fc1": {
+        "aten.addmm": 210763776
+      },
+      "Sam3Model.detr_decoder.layers.4.mlp": {
+        "aten.addmm": 421527552
+      },
+      "Sam3Model.detr_decoder.layers.4.mlp.fc2": {
+        "aten.addmm": 210763776
+      },
+      "Sam3Model.detr_decoder.layers.5.self_attn.q_proj": {
+        "aten.addmm": 26345472
+      },
+      "Sam3Model.detr_decoder.layers.5.self_attn": {
+        "aten.addmm": 105381888,
+        "aten._scaled_dot_product_flash_attention": 41370624
+      },
+      "Sam3Model.detr_decoder.layers.5": {
+        "aten.addmm": 791674880,
+        "aten._scaled_dot_product_flash_attention": 41370624,
+        "aten._scaled_dot_product_efficient_attention": 125140992
+      },
+      "Sam3Model.detr_decoder.layers.5.self_attn.k_proj": {
+        "aten.addmm": 26345472
+      },
+      "Sam3Model.detr_decoder.layers.5.self_attn.v_proj": {
+        "aten.addmm": 26345472
+      },
+      "Sam3Model.detr_decoder.layers.5.self_attn.o_proj": {
+        "aten.addmm": 26345472
+      },
+      "Sam3Model.detr_decoder.layers.5.text_cross_attn.q_proj": {
+        "aten.addmm": 26345472
+      },
+      "Sam3Model.detr_decoder.layers.5.text_cross_attn": {
+        "aten.addmm": 61079552,
+        "aten._scaled_dot_product_efficient_attention": 6586368
+      },
+      "Sam3Model.detr_decoder.layers.5.text_cross_attn.k_proj": {
+        "aten.addmm": 4194304
+      },
+      "Sam3Model.detr_decoder.layers.5.text_cross_attn.v_proj": {
+        "aten.addmm": 4194304
+      },
+      "Sam3Model.detr_decoder.layers.5.text_cross_attn.o_proj": {
+        "aten.addmm": 26345472
+      },
+      "Sam3Model.detr_decoder.layers.5.vision_cross_attn": {
+        "aten.addmm": 203685888,
+        "aten._scaled_dot_product_efficient_attention": 118554624
+      },
+      "Sam3Model.detr_decoder.layers.5.vision_cross_attn.q_proj": {
+        "aten.addmm": 26345472
+      },
+      "Sam3Model.detr_decoder.layers.5.vision_cross_attn.k_proj": {
+        "aten.addmm": 75497472
+      },
+      "Sam3Model.detr_decoder.layers.5.vision_cross_attn.v_proj": {
+        "aten.addmm": 75497472
+      },
+      "Sam3Model.detr_decoder.layers.5.vision_cross_attn.o_proj": {
+        "aten.addmm": 26345472
+      },
+      "Sam3Model.detr_decoder.layers.5.mlp.fc1": {
+        "aten.addmm": 210763776
+      },
+      "Sam3Model.detr_decoder.layers.5.mlp": {
+        "aten.addmm": 421527552
+      },
+      "Sam3Model.detr_decoder.layers.5.mlp.fc2": {
+        "aten.addmm": 210763776
+      },
+      "Sam3Model.dot_product_scoring": {
+        "aten.addmm": 224526336,
+        "aten.bmm": 614400
+      },
+      "Sam3Model.dot_product_scoring.text_mlp": {
+        "aten.addmm": 67108864
+      },
+      "Sam3Model.dot_product_scoring.text_mlp.layer1": {
+        "aten.addmm": 33554432
+      },
+      "Sam3Model.dot_product_scoring.text_mlp.layer2": {
+        "aten.addmm": 33554432
+      },
+      "Sam3Model.dot_product_scoring.text_proj": {
+        "aten.addmm": 131072
+      },
+      "Sam3Model.dot_product_scoring.query_proj": {
+        "aten.addmm": 157286400
+      },
+      "Sam3Model.mask_decoder.prompt_cross_attn.q_proj": {
+        "aten.addmm": 75497472
+      },
+      "Sam3Model.mask_decoder.prompt_cross_attn": {
+        "aten.addmm": 159383552,
+        "aten._scaled_dot_product_efficient_attention": 18874368
+      },
+      "Sam3Model.mask_decoder": {
+        "aten.addmm": 238026752,
+        "aten._scaled_dot_product_efficient_attention": 18874368,
+        "aten.convolution": 14802223104,
+        "aten.bmm": 943718400
+      },
+      "Sam3Model.mask_decoder.prompt_cross_attn.k_proj": {
+        "aten.addmm": 4194304
+      },
+      "Sam3Model.mask_decoder.prompt_cross_attn.v_proj": {
+        "aten.addmm": 4194304
+      },
+      "Sam3Model.mask_decoder.prompt_cross_attn.o_proj": {
+        "aten.addmm": 75497472
+      },
+      "Sam3Model.mask_decoder.pixel_decoder.conv_layers.0": {
+        "aten.convolution": 2717908992
+      },
+      "Sam3Model.mask_decoder.pixel_decoder": {
+        "aten.convolution": 13589544960
+      },
+      "Sam3Model.mask_decoder.pixel_decoder.conv_layers.1": {
+        "aten.convolution": 10871635968
+      },
+      "Sam3Model.mask_decoder.instance_projection": {
+        "aten.convolution": 1207959552
+      },
+      "Sam3Model.mask_decoder.mask_embedder": {
+        "aten.addmm": 78643200
+      },
+      "Sam3Model.mask_decoder.mask_embedder.layers.0": {
+        "aten.addmm": 26214400
+      },
+      "Sam3Model.mask_decoder.mask_embedder.layers.1": {
+        "aten.addmm": 26214400
+      },
+      "Sam3Model.mask_decoder.mask_embedder.layers.2": {
+        "aten.addmm": 26214400
+      },
+      "Sam3Model.mask_decoder.semantic_projection": {
+        "aten.convolution": 4718592
+      }
+    }
+  },
+  "active_window": {
+    "start_iso": "2026-07-27T12:13:19.665060",
+    "end_iso": "2026-07-27T12:13:21.972785",
+    "start_epoch_s": 1785179599.6651013,
+    "end_epoch_s": 1785179601.9727745,
+    "duration_s": 2.307673215866089,
+    "inference_count": 1
+  },
+  "timing_ms": {
+    "inference": {
+      "count": 1,
+      "mean": 2291.8912390000514,
+      "sample_std": 0.0,
+      "min": 2291.8912390000514,
+      "median": 2291.8912390000514,
+      "p95": 2291.8912390000514,
+      "max": 2291.8912390000514
+    },
+    "raw_values": [
+      2291.8912390000514
+    ],
+    "throughput_fps": 0.433336918383694,
+    "mean_fps_from_latency": 0.43632087901182365,
+    "cpu_model_load_s": 2.430452014000025,
+    "gpu_transfer_s": 37.80753241899993
+  },
+  "prediction_consistency": {
+    "best_scores": [
+      0.9661417603492737
+    ],
+    "score_min": 0.9661417603492737,
+    "score_max": 0.9661417603492737,
+    "last_best_query": 25,
+    "last_best_score": 0.9661417603492737,
+    "last_best_box": [
+      0.6640625,
+      0.36328125,
+      0.96875,
+      0.96484375
+    ],
+    "last_detected_queries": 2,
+    "last_mask_area_pixels": 44404
+  },
+  "memory": {
+    "total_shared_gib": 7.441249847412109,
+    "free_initial_gib": 3.9565353393554688,
+    "free_after_placeholder_removal_gib": 3.902294158935547,
+    "free_after_gpu_transfer_gib": 3.5072288513183594,
+    "free_before_measured_gib": 2.893482208251953,
+    "free_after_measured_gib": 2.8562278747558594,
+    "process_max_rss_mb": 2686.28515625,
+    "note": "Jetson uses unified memory. Free shared memory and process RSS are reported; PyTorch allocator peak is invalid when PYTORCH_NO_CUDA_MEMORY_CACHING=1."
+  },
+  "output": {
+    "pred_masks_shape": [
+      1,
+      200,
+      96,
+      96
+    ],
+    "pred_boxes_shape": [
+      1,
+      200,
+      4
+    ],
+    "pred_logits_shape": [
+      1,
+      200
+    ],
+    "mask_file": "benchmark_results/sam3_bf16_336_flops_mask.png",
+    "overlay_file": "benchmark_results/sam3_bf16_336_flops_overlay.png"
+  },
+  "transfer": {
+    "parameter_tensors": 1077,
+    "buffer_tensors": 64,
+    "bytes": 982740588,
+    "mib": 937.2144584655762
+  },
+  "environment": {
+    "pytorch": "2.11.0",
+    "cuda": "12.6",
+    "gpu": "Orin",
+    "cuda_caching_disabled": true
+  }
+}

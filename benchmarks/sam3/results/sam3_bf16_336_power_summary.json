@@ -1,0 +1,179 @@
+{
+  "summary_version": "1.0",
+  "model": {
+    "name": "SAM3 reduced no-text runtime",
+    "source_generation": "SAM3",
+    "path": "models/sam3_no_text_bf16",
+    "complete_original_parameters": 840376374,
+    "gpu_runtime_parameters": 486651702,
+    "precision": {
+      "weights": "BF16",
+      "execution": "BF16",
+      "cached_text_embedding": "BF16",
+      "integer_quantized": false,
+      "quantization_bit_width": null
+    },
+    "deployment_note": "Text encoder is executed offline on CPU; cached projected text features are supplied to the GPU segmentation runtime."
+  },
+  "input": {
+    "image": "/home/xia/jetson_projects/sam2_test/test_image.jpg",
+    "original_size": [
+      640,
+      480
+    ],
+    "model_input_shape": [
+      1,
+      3,
+      336,
+      336
+    ],
+    "prompt": "person",
+    "text_embedding_shape": [
+      1,
+      32,
+      256
+    ],
+    "batch_size": 1
+  },
+  "power_mode": "15W",
+  "power_rail": "VDD_IN",
+  "benchmark_file": "benchmark_results/sam3_bf16_336_benchmark.json",
+  "idle_log": "benchmark_results/sam3_idle_clean_15w_20260727.log",
+  "active_log": "benchmark_results/sam3_active_clean_15w_20260727.log",
+  "active_window": {
+    "benchmark_start_iso": "2026-07-27T12:01:29.493919",
+    "benchmark_end_iso": "2026-07-27T12:02:10.944731",
+    "analyzed_start_inclusive": "2026-07-27T12:01:30",
+    "analyzed_end_exclusive": "2026-07-27T12:02:10",
+    "benchmark_duration_s": 41.450767278671265,
+    "inference_count": 30
+  },
+  "idle_power_w": {
+    "samples": 467,
+    "mean": 5.539884368308352,
+    "sample_std": 0.4432299748831911,
+    "min": 5.234,
+    "median": 5.352,
+    "max": 7.32
+  },
+  "active_power_w": {
+    "samples": 353,
+    "mean": 7.401011331444758,
+    "sample_std": 0.26410784618539473,
+    "min": 6.809,
+    "median": 7.387,
+    "max": 8.252
+  },
+  "incremental_power_w": 1.8611269631364067,
+  "energy": {
+    "gross_total_energy_j": 306.77759832652566,
+    "idle_equivalent_energy_j": 229.63245770149825,
+    "incremental_total_energy_j": 77.14514062502738,
+    "gross_energy_per_inference_j": 10.225919944217521,
+    "incremental_energy_per_inference_j": 2.5715046875009127,
+    "gross_inferences_per_joule": 0.09779071276276446,
+    "incremental_inferences_per_joule": 0.38887737784831283,
+    "fps_per_active_watt": 0.09779071276276446
+  },
+  "performance": {
+    "timing_ms": {
+      "inference": {
+        "count": 30,
+        "mean": 1379.342011899997,
+        "sample_std": 93.89142793445897,
+        "min": 1257.135226999992,
+        "median": 1354.2966029999945,
+        "p95": 1522.6081586999924,
+        "max": 1723.0914300000109
+      },
+      "raw_values": [
+        1428.3293200000173,
+        1439.7259289999909,
+        1299.1550029999814,
+        1257.135226999992,
+        1437.5132579999672,
+        1353.3942459999935,
+        1424.9258039999972,
+        1372.8261150000094,
+        1282.5958490000176,
+        1379.9292150000042,
+        1369.0769749999845,
+        1723.0914300000109,
+        1398.28499500004,
+        1342.5992690000044,
+        1539.4509270000185,
+        1502.0225529999607,
+        1355.1989599999956,
+        1322.2963869999944,
+        1335.6196819999582,
+        1312.5461170000108,
+        1315.1821459999837,
+        1333.1950869999787,
+        1320.2851129999544,
+        1301.1129210000263,
+        1481.838917999994,
+        1435.3965530000323,
+        1327.4072969999793,
+        1320.9995810000237,
+        1301.2617750000004,
+        1367.8637049999907
+      ],
+      "throughput_fps": 0.7237501732672793,
+      "mean_fps_from_latency": 0.7249833553772017,
+      "cpu_model_load_s": 2.7100437080000006,
+      "gpu_transfer_s": 39.179881129999984
+    },
+    "throughput_fps": 0.7237501732672793
+  },
+  "tegrastats_active_window": {
+    "ram_used_mb": {
+      "samples": 353,
+      "mean": 4226.246458923512,
+      "sample_std": 82.1177016625868,
+      "min": 4074.0,
+      "median": 4213.0,
+      "max": 4379.0
+    },
+    "gpu_temperature_c": {
+      "samples": 353,
+      "mean": 47.9393342776204,
+      "sample_std": 0.25660006330178387,
+      "min": 47.375,
+      "median": 47.968,
+      "max": 48.593
+    },
+    "gr3d_utilization_percent": {
+      "samples": 353,
+      "mean": 34.405099150141645,
+      "sample_std": 12.213427644764238,
+      "min": 7.0,
+      "median": 34.0,
+      "max": 94.0
+    }
+  },
+  "process_memory": {
+    "total_shared_gib": 7.441249847412109,
+    "free_initial_gib": 4.659793853759766,
+    "free_after_placeholder_removal_gib": 4.596244812011719,
+    "free_after_gpu_transfer_gib": 3.869915008544922,
+    "free_before_measured_gib": 3.215717315673828,
+    "free_after_measured_gib": 2.90350341796875,
+    "process_max_rss_mb": 2685.84375,
+    "note": "Jetson uses unified memory. Free shared memory and process RSS are reported; PyTorch allocator peak is invalid when PYTORCH_NO_CUDA_MEMORY_CACHING=1."
+  },
+  "method": {
+    "tegrastats_interval_ms": 100,
+    "instantaneous_vdd_in_used": true,
+    "reported_running_average_not_used": true,
+    "idle_boundary_seconds_discarded": true,
+    "active_boundary_seconds_discarded": true,
+    "same_clean_boot_measurement": true,
+    "model_loading_in_power_window": false,
+    "gpu_transfer_in_power_window": false,
+    "warmup_in_power_window": false,
+    "image_preprocessing_in_power_window": false,
+    "mask_postprocessing_in_power_window": false,
+    "camera_capture_included": false,
+    "visualization_included": false
+  }
+}

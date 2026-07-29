@@ -1,0 +1,58 @@
+{
+  "model": "YOLOv8n",
+  "precision": "FP32",
+  "power_mode": "15W",
+  "power_rail": "VDD_IN",
+  "active_window": {
+    "start_inclusive": "2026-07-15T17:59:13",
+    "end_exclusive": "2026-07-15T18:00:12"
+  },
+  "idle_power": {
+    "samples": 531,
+    "mean_w": 5.288952919020716,
+    "sample_std_w": 0.08749130224129906,
+    "min_w": 5.195,
+    "median_w": 5.274,
+    "max_w": 5.628
+  },
+  "active_power": {
+    "samples": 522,
+    "mean_w": 9.393323754789272,
+    "sample_std_w": 0.15137359743008788,
+    "min_w": 7.819,
+    "median_w": 9.415,
+    "max_w": 9.886
+  },
+  "incremental_power_w": 4.104370835768556,
+  "run": {
+    "model": "YOLOv8n",
+    "precision": "FP32",
+    "power_mode": "15W",
+    "start_time": "2026-07-15T17:59:12.486859",
+    "end_time": "2026-07-15T18:00:12.495754",
+    "duration_s": 60.0089128150139,
+    "inference_count": 2338,
+    "mean_time_s": 0.02566677194825231,
+    "mean_time_ms": 25.66677194825231,
+    "throughput_fps": 38.960879148189555
+  },
+  "energy": {
+    "gross_total_energy_j": 563.6831462443484,
+    "idle_equivalent_energy_j": 317.3843146002274,
+    "incremental_total_energy_j": 246.298831644121,
+    "gross_energy_per_inference_j": 0.24109629865027735,
+    "incremental_energy_per_inference_j": 0.10534595023272926,
+    "gross_inferences_per_joule": 4.147720249536272,
+    "incremental_inferences_per_joule": 9.492533863815455,
+    "fps_per_active_watt": 4.147720249536273
+  },
+  "method": {
+    "tegrastats_interval_ms": 100,
+    "instantaneous_vdd_in_used": true,
+    "boundary_seconds_discarded": true,
+    "camera_capture_included": false,
+    "display_included": false,
+    "preprocessing_included": true,
+    "postprocessing_included": true
+  }
+}

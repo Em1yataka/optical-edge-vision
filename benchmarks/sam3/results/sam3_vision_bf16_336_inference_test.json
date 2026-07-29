@@ -1,0 +1,65 @@
+{
+  "test": "SAM3 standalone vision BF16 336px inference",
+  "success": true,
+  "model": {
+    "name": "SAM3 Vision Encoder",
+    "checkpoint": "models/sam3_vision_bf16.safetensors",
+    "parameters": 454038784,
+    "precision": "BF16",
+    "integer_quantized": false
+  },
+  "input": {
+    "image_path": "/home/xia/jetson_projects/sam2_test/test_image.jpg",
+    "original_size": {
+      "width": 640,
+      "height": 480
+    },
+    "model_input_shape": [
+      1,
+      3,
+      336,
+      336
+    ],
+    "model_input_dtype": "torch.bfloat16",
+    "image_size": 336,
+    "batch_size": 1
+  },
+  "output": {
+    "shape": [
+      1,
+      576,
+      1024
+    ],
+    "dtype": "torch.bfloat16",
+    "finite": true,
+    "mean": 0.015885690227150917,
+    "std": 1.4107378721237183,
+    "min": -204.0,
+    "max": 31.75
+  },
+  "timing": {
+    "gpu_transfer_s": 0.8775574769999821,
+    "vision_inference_s": 1.9006789419998995,
+    "vision_inference_ms": 1900.6789419998995,
+    "vision_fps": 0.5261277840789866
+  },
+  "memory": {
+    "shared_total_gib": 7.441253662109375,
+    "shared_free_initial_gib": 3.8132286071777344,
+    "shared_free_after_transfer_gib": 3.1531028747558594,
+    "shared_free_after_inference_gib": 2.6768722534179688,
+    "cuda_peak_allocated_mb": 0.0,
+    "process_max_rss_mb": 3214.26953125
+  },
+  "transfer": {
+    "parameter_tensors": 538,
+    "buffer_tensors": 64,
+    "total_mib": 875.01025390625
+  },
+  "environment": {
+    "pytorch": "2.11.0",
+    "cuda": "12.6",
+    "gpu": "Orin",
+    "cuda_caching_disabled": true
+  }
+}

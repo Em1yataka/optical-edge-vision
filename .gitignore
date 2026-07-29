@@ -1,2 +1,52 @@
 __pycache__/
 *.pyc
+# Python
+**/__pycache__/
+*.py[cod]
+*.so
+.pytest_cache/
+.mypy_cache/
+
+# Virtual environments
+.venv/
+venv/
+env/
+*_env/
+# Secrets and local configuration
+.env
+.env.*
+*.pem
+*.key
+*token*
+credentials*
+secrets*
+# Model weights and inference engines
+*.pt
+*.pth
+*.ckpt
+*.safetensors
+*.onnx
+*.engine
+*.trt
+*.weights
+models/
+checkpoints/
+offload/
+# Hugging Face and ML caches
+.cache/
+huggingface/
+transformers_cache/
+# Large runtime outputs
+*.log
+*.tmp
+*.npy
+*.npz
+core
+core.*
+# OS and editors
+.DS_Store
+.vscode/
+.idea/
+# Confidential external project
+MicroFoundation/
+microfoundation/

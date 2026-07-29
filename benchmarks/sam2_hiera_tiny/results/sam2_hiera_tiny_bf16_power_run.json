@@ -1,0 +1,21 @@
+{
+  "model": "SAM2 Hiera Tiny",
+  "generation": "SAM2 original",
+  "precision": "BF16 autocast with FP32 weights",
+  "power_mode": "15W",
+  "start_time": "2026-07-16T16:42:42.939906",
+  "end_time": "2026-07-16T16:43:43.107064",
+  "duration_s": 60.16718030400807,
+  "inference_count": 234,
+  "mean_time_s": 0.25712470215388067,
+  "mean_time_ms": 257.12470215388066,
+  "throughput_fps": 3.889163474466693,
+  "workload": {
+    "image_encoding_included": true,
+    "prompt_and_decoder_included": true,
+    "prompt": "one positive center point",
+    "multimask_output": true,
+    "camera_capture_included": false,
+    "visualization_included": false
+  }
+}

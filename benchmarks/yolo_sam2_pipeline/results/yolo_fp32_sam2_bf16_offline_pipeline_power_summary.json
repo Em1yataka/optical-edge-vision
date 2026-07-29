@@ -1,0 +1,56 @@
+{
+  "pipeline": "YOLOv8n FP32 + SAM2 Hiera Tiny BF16",
+  "power_mode": "15W",
+  "power_rail": "VDD_IN",
+  "active_log": "benchmark_results/yolo_sam2_offline_bf16_active_15w.log",
+  "active_window": {
+    "start_inclusive": "2026-07-16T17:26:28",
+    "end_exclusive": "2026-07-16T17:26:59"
+  },
+  "idle_power": {
+    "samples": 531,
+    "mean_w": 5.248521657250471,
+    "sample_std_w": 0.04507491669414587,
+    "min_w": 5.156,
+    "median_w": 5.234,
+    "max_w": 5.431
+  },
+  "active_power": {
+    "samples": 273,
+    "mean_w": 10.529813186813188,
+    "sample_std_w": 0.24522220919870247,
+    "min_w": 9.948,
+    "median_w": 10.536,
+    "max_w": 11.084
+  },
+  "incremental_power_w": 5.281291529562717,
+  "run": {
+    "start_time": "2026-07-16T17:26:27.313261",
+    "end_time": "2026-07-16T17:26:59.484312",
+    "duration_s": 32.17101231002016,
+    "inference_count": 100,
+    "throughput_fps": 3.1083883539733517
+  },
+  "energy": {
+    "gross_total_energy_j": 338.7547496551797,
+    "idle_equivalent_energy_j": 168.85025484481233,
+    "incremental_total_energy_j": 169.90449481036737,
+    "gross_energy_per_inference_j": 3.387547496551797,
+    "incremental_energy_per_inference_j": 1.6990449481036736,
+    "gross_inferences_per_joule": 0.29519881301085976,
+    "incremental_inferences_per_joule": 0.5885659476614278,
+    "fps_per_active_watt": 0.29519881301085976
+  },
+  "method": {
+    "tegrastats_interval_ms": 100,
+    "instantaneous_vdd_in_used": true,
+    "common_same_day_idle_baseline_used": true,
+    "idle_baseline_samples": 531,
+    "boundary_seconds_discarded": true,
+    "camera_capture_included": false,
+    "display_included": false,
+    "yolo_included": true,
+    "sam2_image_encoding_included": true,
+    "sam2_prompt_and_decoder_included": true
+  }
+}
