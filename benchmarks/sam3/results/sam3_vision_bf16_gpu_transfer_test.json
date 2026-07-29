@@ -1,0 +1,45 @@
+{
+  "test": "standalone SAM3 vision BF16 GPU transfer",
+  "success": true,
+  "vision_checkpoint": "models/sam3_vision_bf16.safetensors",
+  "image_size": 336,
+  "parameters": 454038784,
+  "parameter_dtypes": [
+    "torch.bfloat16"
+  ],
+  "strict_loading": {
+    "missing_keys": [],
+    "unexpected_keys": []
+  },
+  "final_devices": {
+    "parameters": [
+      "cuda:0"
+    ],
+    "buffers": [
+      "cuda:0"
+    ]
+  },
+  "timing_s": {
+    "cpu_model_creation": 22.197288126000103,
+    "checkpoint_loading": 0.08229876099994726,
+    "gpu_transfer": 1.0124602939999932
+  },
+  "transfer": {
+    "parameter_tensor_count": 538,
+    "buffer_tensor_count": 64,
+    "total_mib": 875.01025390625
+  },
+  "memory": {
+    "shared_total_gib": 7.441253662109375,
+    "shared_free_before_gib": 4.760311126708984,
+    "shared_free_after_gib": 3.07080078125,
+    "cuda_peak_allocated_mb": 0.0,
+    "process_max_rss_mb": 3215.640625
+  },
+  "environment": {
+    "pytorch": "2.11.0",
+    "cuda": "12.6",
+    "gpu": "Orin",
+    "cuda_caching_disabled": true
+  }
+}

@@ -1,0 +1,18 @@
+{
+  "model": "facebook/sam3",
+  "precision": "BF16",
+  "success": true,
+  "deployment_test": {
+    "vision_encoder": "cuda:0",
+    "text_encoder": "cpu",
+    "remaining_modules": "cpu"
+  },
+  "cpu_load_time_s": 4.597098708967678,
+  "vision_encoder_transfer_time_s": 1.1984788649715483,
+  "total_shared_memory_gib": 7.441249847412109,
+  "free_before_cpu_load_gib": 4.911396026611328,
+  "free_after_vision_transfer_gib": 2.378467559814453,
+  "process_max_rss_mb": 5170.6953125,
+  "cuda_initialized_before_cpu_load": true,
+  "cuda_caching_allocator_disabled": true
+}

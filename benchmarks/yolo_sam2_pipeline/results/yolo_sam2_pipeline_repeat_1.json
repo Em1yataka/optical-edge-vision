@@ -1,0 +1,150 @@
+{
+  "benchmark_version": "1.0",
+  "timestamp": "2026-07-16T17:26:59.485163",
+  "pipeline": {
+    "name": "YOLOv8n FP32 + SAM2 Hiera Tiny BF16",
+    "input": "../test_image.jpg",
+    "input_size": [
+      640,
+      480
+    ],
+    "task": "person detection followed by box-prompted segmentation"
+  },
+  "models": {
+    "yolo": {
+      "name": "YOLOv8n",
+      "precision": "FP32",
+      "parameters": 3151904,
+      "flops_g": 8.9,
+      "integer_quantized": false
+    },
+    "sam2": {
+      "name": "SAM2 Hiera Tiny",
+      "weights": "FP32",
+      "execution": "BF16 autocast",
+      "parameters": 38945986,
+      "integer_quantized": false
+    }
+  },
+  "protocol": {
+    "power_mode": "15W",
+    "warmup_runs": 10,
+    "measured_runs": 100,
+    "cuda_synchronization": true,
+    "image_loading_included": false,
+    "color_conversion_included": false,
+    "yolo_preprocessing_included": true,
+    "yolo_inference_included": true,
+    "yolo_postprocessing_included": true,
+    "box_selection_included": true,
+    "sam2_image_encoding_included": true,
+    "sam2_prompt_and_decoder_included": true,
+    "camera_capture_included": false,
+    "display_included": false,
+    "model_loading_included": false
+  },
+  "run": {
+    "start_time": "2026-07-16T17:26:27.313261",
+    "end_time": "2026-07-16T17:26:59.484312",
+    "duration_s": 32.17101231002016,
+    "inference_count": 100,
+    "throughput_fps": 3.1083883539733517
+  },
+  "timing_ms": {
+    "yolo_end_to_end": {
+      "count": 100,
+      "mean": 32.03909513249528,
+      "std": 2.4087153404184725,
+      "min": 27.81406498979777,
+      "median": 32.65496548556257,
+      "p95": 35.39046029327437,
+      "max": 40.17954200389795
+    },
+    "sam2_image_encoder": {
+      "count": 100,
+      "mean": 237.28411453979788,
+      "std": 3.2428285928514615,
+      "min": 233.6660459986888,
+      "median": 235.60915699636098,
+      "p95": 242.68541782948887,
+      "max": 245.74090098030865
+    },
+    "sam2_prompt_and_decoder": {
+      "count": 100,
+      "mean": 49.91480472992407,
+      "std": 4.458100866361088,
+      "min": 44.045721006114036,
+      "median": 51.022806015680544,
+      "p95": 56.305478408467025,
+      "max": 58.70878099813126
+    },
+    "sam2_complete": {
+      "count": 100,
+      "mean": 287.4182160111377,
+      "std": 4.660164661230854,
+      "min": 278.22026901412755,
+      "median": 287.89353449246846,
+      "p95": 294.65411685960134,
+      "max": 299.233520985581
+    },
+    "complete_pipeline": {
+      "count": 100,
+      "mean": 320.93553169979714,
+      "std": 6.236795376692923,
+      "min": 309.01363599696197,
+      "median": 321.1918035085546,
+      "p95": 329.7029755092808,
+      "max": 337.92651499970816
+    }
+  },
+  "predictions": {
+    "yolo_confidence": {
+      "count": 100,
+      "mean": 0.6754917502403259,
+      "std": 0.0,
+      "min": 0.6754917502403259,
+      "median": 0.6754917502403259,
+      "p95": 0.6754917502403259,
+      "max": 0.6754917502403259
+    },
+    "sam2_score": {
+      "count": 100,
+      "mean": 0.82421875,
+      "std": 0.0,
+      "min": 0.82421875,
+      "median": 0.82421875,
+      "p95": 0.82421875,
+      "max": 0.82421875
+    },
+    "mask_area_pixels": {
+      "count": 100,
+      "mean": 140270.0,
+      "std": 0.0,
+      "min": 140270.0,
+      "median": 140270.0,
+      "p95": 140270.0,
+      "max": 140270.0
+    },
+    "last_person_box": [
+      33.00921630859375,
+      34.77191162109375,
+      637.6981201171875,
+      470.356689453125
+    ]
+  },
+  "memory": {
+    "cuda_peak_allocated_bytes": 563553280,
+    "cuda_peak_allocated_mb": 537.4462890625,
+    "cuda_peak_reserved_bytes": 683671552,
+    "cuda_peak_reserved_mb": 652.0,
+    "process_max_rss_kb": 2566168,
+    "process_max_rss_mb": 2506.0234375
+  },
+  "environment": {
+    "pytorch": "2.11.0",
+    "cuda": "12.6",
+    "gpu": "Orin",
+    "power_mode": "15W"
+  },
+  "model_initialization_s": 1.9450606729951687
+}

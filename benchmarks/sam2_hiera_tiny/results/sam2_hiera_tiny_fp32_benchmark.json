@@ -1,0 +1,100 @@
+{
+  "benchmark_version": "1.0",
+  "timestamp": "2026-07-15T18:17:42.479355",
+  "model": {
+    "name": "SAM2 Hiera Tiny",
+    "generation": "SAM2 original",
+    "checkpoint": "/home/xia/jetson_projects/sam2_test/sam2/checkpoints/sam2_hiera_tiny.pt",
+    "checkpoint_bytes": 155906050,
+    "config": "sam2_hiera_t.yaml",
+    "parameters": 38945986,
+    "trainable_parameters": 38945986,
+    "parameter_dtypes": [
+      "torch.float32"
+    ],
+    "precision": "FP32",
+    "integer_quantized": false
+  },
+  "input": {
+    "image_path": "/home/xia/jetson_projects/sam2_test/test_image.jpg",
+    "original_size": [
+      640,
+      480
+    ],
+    "source_size_after_manual_resize": [
+      512,
+      512
+    ],
+    "expected_internal_input": [
+      1024,
+      1024
+    ],
+    "batch_size": 1,
+    "prompt": "one positive center point",
+    "multimask_output": true
+  },
+  "protocol": {
+    "encoder_warmup": 3,
+    "encoder_runs": 20,
+    "prompt_warmup": 10,
+    "prompt_runs": 100,
+    "end_to_end_warmup": 3,
+    "end_to_end_runs": 30,
+    "cuda_synchronization": true,
+    "model_eval_mode": true,
+    "model_loading_excluded": true,
+    "camera_capture_included": false,
+    "visualization_included": false
+  },
+  "timing_ms": {
+    "image_encoder": {
+      "count": 20,
+      "mean": 604.2120556470763,
+      "std": 5.293186761023358,
+      "min": 596.0594510106603,
+      "median": 602.8070124957594,
+      "p95": 611.7168111020874,
+      "max": 613.1798129936215
+    },
+    "prompt_and_mask_decoder": {
+      "count": 100,
+      "mean": 31.012953141034814,
+      "std": 3.0227361911456567,
+      "min": 27.76908699888736,
+      "median": 29.80242700141389,
+      "p95": 37.32222439284669,
+      "max": 43.72217300988268
+    },
+    "end_to_end": {
+      "count": 30,
+      "mean": 635.7084081993283,
+      "std": 5.857627665428267,
+      "min": 628.8924459950067,
+      "median": 634.3743495017407,
+      "p95": 646.6392496484332,
+      "max": 649.7875649947673
+    },
+    "end_to_end_fps": 1.5730482515286268,
+    "model_load_s": 1.639434242999414
+  },
+  "memory": {
+    "cuda_peak_allocated_bytes": 626811392,
+    "cuda_peak_allocated_mb": 597.77392578125,
+    "cuda_peak_reserved_bytes": 878706688,
+    "cuda_peak_reserved_mb": 838.0,
+    "process_max_rss_kb": 2240492,
+    "process_max_rss_mb": 2187.98046875
+  },
+  "output": {
+    "best_score_last_run": 0.9079521298408508,
+    "mask_count": 3
+  },
+  "environment": {
+    "python": "3.10.12 (main, Jun 22 2026, 18:55:27) [GCC 11.4.0]",
+    "pytorch": "2.11.0",
+    "cuda": "12.6",
+    "gpu": "Orin",
+    "platform": "Linux-5.15.148-tegra-aarch64-with-glibc2.35",
+    "power_mode": "15W"
+  }
+}

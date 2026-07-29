@@ -1,0 +1,555 @@
+{
+  "model": "facebook/sam3",
+  "precision": "BF16",
+  "load_device": "CPU",
+  "load_time_s": 5.149872930953279,
+  "total_parameters": 840376374,
+  "total_parameter_size_mib": 1602.8907279968262,
+  "process_max_rss_mb": 4881.35546875,
+  "top_level_modules": [
+    {
+      "module": "vision_encoder",
+      "parameters": 454038784,
+      "size_mib": 866.01025390625
+    },
+    {
+      "module": "text_encoder",
+      "parameters": 353462272,
+      "size_mib": 674.17578125
+    },
+    {
+      "module": "detr_decoder",
+      "parameters": 11575093,
+      "size_mib": 22.07773780822754
+    },
+    {
+      "module": "detr_encoder",
+      "parameters": 9472512,
+      "size_mib": 18.0673828125
+    },
+    {
+      "module": "geometry_encoder",
+      "parameters": 8083456,
+      "size_mib": 15.41796875
+    },
+    {
+      "module": "mask_decoder",
+      "parameters": 2298881,
+      "size_mib": 4.384767532348633
+    },
+    {
+      "module": "dot_product_scoring",
+      "parameters": 1182976,
+      "size_mib": 2.25634765625
+    },
+    {
+      "module": "text_projection",
+      "parameters": 262400,
+      "size_mib": 0.50048828125
+    }
+  ],
+  "second_level_modules": [
+    {
+      "module": "vision_encoder.backbone",
+      "parameters": 446236672,
+      "size_mib": 851.12890625
+    },
+    {
+      "module": "text_encoder.text_model",
+      "parameters": 352937984,
+      "size_mib": 673.17578125
+    },
+    {
+      "module": "detr_decoder.layers",
+      "parameters": 11054592,
+      "size_mib": 21.0849609375
+    },
+    {
+      "module": "detr_encoder.layers",
+      "parameters": 9472512,
+      "size_mib": 18.0673828125
+    },
+    {
+      "module": "vision_encoder.neck",
+      "parameters": 7802112,
+      "size_mib": 14.88134765625
+    },
+    {
+      "module": "geometry_encoder.layers",
+      "parameters": 4736256,
+      "size_mib": 9.03369140625
+    },
+    {
+      "module": "geometry_encoder.boxes_pool_project",
+      "parameters": 3211520,
+      "size_mib": 6.12548828125
+    },
+    {
+      "module": "mask_decoder.pixel_decoder",
+      "parameters": 1771776,
+      "size_mib": 3.37939453125
+    },
+    {
+      "module": "dot_product_scoring.text_mlp",
+      "parameters": 1050880,
+      "size_mib": 2.00439453125
+    },
+    {
+      "module": "text_encoder.text_projection",
+      "parameters": 524288,
+      "size_mib": 1.0
+    },
+    {
+      "module": "mask_decoder.prompt_cross_attn",
+      "parameters": 263168,
+      "size_mib": 0.501953125
+    },
+    {
+      "module": "mask_decoder.mask_embedder",
+      "parameters": 197376,
+      "size_mib": 0.37646484375
+    },
+    {
+      "module": "detr_decoder.ref_point_head",
+      "parameters": 197120,
+      "size_mib": 0.3759765625
+    },
+    {
+      "module": "detr_decoder.box_head",
+      "parameters": 132612,
+      "size_mib": 0.25293731689453125
+    },
+    {
+      "module": "detr_decoder.presence_head",
+      "parameters": 131841,
+      "size_mib": 0.2514667510986328
+    },
+    {
+      "module": "geometry_encoder.boxes_pos_enc_project",
+      "parameters": 66304,
+      "size_mib": 0.12646484375
+    },
+    {
+      "module": "geometry_encoder.final_proj",
+      "parameters": 65792,
+      "size_mib": 0.12548828125
+    },
+    {
+      "module": "mask_decoder.instance_projection",
+      "parameters": 65792,
+      "size_mib": 0.12548828125
+    },
+    {
+      "module": "dot_product_scoring.text_proj",
+      "parameters": 65792,
+      "size_mib": 0.12548828125
+    },
+    {
+      "module": "dot_product_scoring.query_proj",
+      "parameters": 65792,
+      "size_mib": 0.12548828125
+    },
+    {
+      "module": "detr_decoder.query_embed",
+      "parameters": 51200,
+      "size_mib": 0.09765625
+    },
+    {
+      "module": "detr_decoder.box_rpb_embed_x",
+      "parameters": 2824,
+      "size_mib": 0.0053863525390625
+    },
+    {
+      "module": "detr_decoder.box_rpb_embed_y",
+      "parameters": 2824,
+      "size_mib": 0.0053863525390625
+    },
+    {
+      "module": "geometry_encoder.boxes_direct_project",
+      "parameters": 1280,
+      "size_mib": 0.00244140625
+    },
+    {
+      "module": "detr_decoder.reference_points",
+      "parameters": 800,
+      "size_mib": 0.00152587890625
+    },
+    {
+      "module": "geometry_encoder.label_embed",
+      "parameters": 512,
+      "size_mib": 0.0009765625
+    },
+    {
+      "module": "geometry_encoder.vision_layer_norm",
+      "parameters": 512,
+      "size_mib": 0.0009765625
+    },
+    {
+      "module": "geometry_encoder.prompt_layer_norm",
+      "parameters": 512,
+      "size_mib": 0.0009765625
+    },
+    {
+      "module": "geometry_encoder.output_layer_norm",
+      "parameters": 512,
+      "size_mib": 0.0009765625
+    },
+    {
+      "module": "detr_decoder.output_layer_norm",
+      "parameters": 512,
+      "size_mib": 0.0009765625
+    },
+    {
+      "module": "detr_decoder.presence_layer_norm",
+      "parameters": 512,
+      "size_mib": 0.0009765625
+    },
+    {
+      "module": "mask_decoder.prompt_cross_attn_norm",
+      "parameters": 512,
+      "size_mib": 0.0009765625
+    },
+    {
+      "module": "dot_product_scoring.text_mlp_out_norm",
+      "parameters": 512,
+      "size_mib": 0.0009765625
+    },
+    {
+      "module": "mask_decoder.semantic_projection",
+      "parameters": 257,
+      "size_mib": 0.0004901885986328125
+    },
+    {
+      "module": "geometry_encoder.cls_embed",
+      "parameters": 256,
+      "size_mib": 0.00048828125
+    },
+    {
+      "module": "detr_decoder.presence_token",
+      "parameters": 256,
+      "size_mib": 0.00048828125
+    },
+    {
+      "module": "geometry_encoder.position_encoding",
+      "parameters": 0,
+      "size_mib": 0.0
+    },
+    {
+      "module": "detr_decoder.position_encoding",
+      "parameters": 0,
+      "size_mib": 0.0
+    },
+    {
+      "module": "mask_decoder.prompt_cross_attn_dropout",
+      "parameters": 0,
+      "size_mib": 0.0
+    },
+    {
+      "module": "dot_product_scoring.text_mlp_dropout",
+      "parameters": 0,
+      "size_mib": 0.0
+    }
+  ],
+  "largest_parameters": [
+    {
+      "parameter": "text_encoder.text_model.embeddings.token_embedding.weight",
+      "shape": [
+        49408,
+        1024
+      ],
+      "dtype": "torch.bfloat16",
+      "parameters": 50593792,
+      "size_mib": 96.5
+    },
+    {
+      "parameter": "vision_encoder.backbone.layers.0.mlp.fc1.weight",
+      "shape": [
+        4736,
+        1024
+      ],
+      "dtype": "torch.bfloat16",
+      "parameters": 4849664,
+      "size_mib": 9.25
+    },
+    {
+      "parameter": "vision_encoder.backbone.layers.0.mlp.fc2.weight",
+      "shape": [
+        1024,
+        4736
+      ],
+      "dtype": "torch.bfloat16",
+      "parameters": 4849664,
+      "size_mib": 9.25
+    },
+    {
+      "parameter": "vision_encoder.backbone.layers.1.mlp.fc1.weight",
+      "shape": [
+        4736,
+        1024
+      ],
+      "dtype": "torch.bfloat16",
+      "parameters": 4849664,
+      "size_mib": 9.25
+    },
+    {
+      "parameter": "vision_encoder.backbone.layers.1.mlp.fc2.weight",
+      "shape": [
+        1024,
+        4736
+      ],
+      "dtype": "torch.bfloat16",
+      "parameters": 4849664,
+      "size_mib": 9.25
+    },
+    {
+      "parameter": "vision_encoder.backbone.layers.2.mlp.fc1.weight",
+      "shape": [
+        4736,
+        1024
+      ],
+      "dtype": "torch.bfloat16",
+      "parameters": 4849664,
+      "size_mib": 9.25
+    },
+    {
+      "parameter": "vision_encoder.backbone.layers.2.mlp.fc2.weight",
+      "shape": [
+        1024,
+        4736
+      ],
+      "dtype": "torch.bfloat16",
+      "parameters": 4849664,
+      "size_mib": 9.25
+    },
+    {
+      "parameter": "vision_encoder.backbone.layers.3.mlp.fc1.weight",
+      "shape": [
+        4736,
+        1024
+      ],
+      "dtype": "torch.bfloat16",
+      "parameters": 4849664,
+      "size_mib": 9.25
+    },
+    {
+      "parameter": "vision_encoder.backbone.layers.3.mlp.fc2.weight",
+      "shape": [
+        1024,
+        4736
+      ],
+      "dtype": "torch.bfloat16",
+      "parameters": 4849664,
+      "size_mib": 9.25
+    },
+    {
+      "parameter": "vision_encoder.backbone.layers.4.mlp.fc1.weight",
+      "shape": [
+        4736,
+        1024
+      ],
+      "dtype": "torch.bfloat16",
+      "parameters": 4849664,
+      "size_mib": 9.25
+    },
+    {
+      "parameter": "vision_encoder.backbone.layers.4.mlp.fc2.weight",
+      "shape": [
+        1024,
+        4736
+      ],
+      "dtype": "torch.bfloat16",
+      "parameters": 4849664,
+      "size_mib": 9.25
+    },
+    {
+      "parameter": "vision_encoder.backbone.layers.5.mlp.fc1.weight",
+      "shape": [
+        4736,
+        1024
+      ],
+      "dtype": "torch.bfloat16",
+      "parameters": 4849664,
+      "size_mib": 9.25
+    },
+    {
+      "parameter": "vision_encoder.backbone.layers.5.mlp.fc2.weight",
+      "shape": [
+        1024,
+        4736
+      ],
+      "dtype": "torch.bfloat16",
+      "parameters": 4849664,
+      "size_mib": 9.25
+    },
+    {
+      "parameter": "vision_encoder.backbone.layers.6.mlp.fc1.weight",
+      "shape": [
+        4736,
+        1024
+      ],
+      "dtype": "torch.bfloat16",
+      "parameters": 4849664,
+      "size_mib": 9.25
+    },
+    {
+      "parameter": "vision_encoder.backbone.layers.6.mlp.fc2.weight",
+      "shape": [
+        1024,
+        4736
+      ],
+      "dtype": "torch.bfloat16",
+      "parameters": 4849664,
+      "size_mib": 9.25
+    },
+    {
+      "parameter": "vision_encoder.backbone.layers.7.mlp.fc1.weight",
+      "shape": [
+        4736,
+        1024
+      ],
+      "dtype": "torch.bfloat16",
+      "parameters": 4849664,
+      "size_mib": 9.25
+    },
+    {
+      "parameter": "vision_encoder.backbone.layers.7.mlp.fc2.weight",
+      "shape": [
+        1024,
+        4736
+      ],
+      "dtype": "torch.bfloat16",
+      "parameters": 4849664,
+      "size_mib": 9.25
+    },
+    {
+      "parameter": "vision_encoder.backbone.layers.8.mlp.fc1.weight",
+      "shape": [
+        4736,
+        1024
+      ],
+      "dtype": "torch.bfloat16",
+      "parameters": 4849664,
+      "size_mib": 9.25
+    },
+    {
+      "parameter": "vision_encoder.backbone.layers.8.mlp.fc2.weight",
+      "shape": [
+        1024,
+        4736
+      ],
+      "dtype": "torch.bfloat16",
+      "parameters": 4849664,
+      "size_mib": 9.25
+    },
+    {
+      "parameter": "vision_encoder.backbone.layers.9.mlp.fc1.weight",
+      "shape": [
+        4736,
+        1024
+      ],
+      "dtype": "torch.bfloat16",
+      "parameters": 4849664,
+      "size_mib": 9.25
+    },
+    {
+      "parameter": "vision_encoder.backbone.layers.9.mlp.fc2.weight",
+      "shape": [
+        1024,
+        4736
+      ],
+      "dtype": "torch.bfloat16",
+      "parameters": 4849664,
+      "size_mib": 9.25
+    },
+    {
+      "parameter": "vision_encoder.backbone.layers.10.mlp.fc1.weight",
+      "shape": [
+        4736,
+        1024
+      ],
+      "dtype": "torch.bfloat16",
+      "parameters": 4849664,
+      "size_mib": 9.25
+    },
+    {
+      "parameter": "vision_encoder.backbone.layers.10.mlp.fc2.weight",
+      "shape": [
+        1024,
+        4736
+      ],
+      "dtype": "torch.bfloat16",
+      "parameters": 4849664,
+      "size_mib": 9.25
+    },
+    {
+      "parameter": "vision_encoder.backbone.layers.11.mlp.fc1.weight",
+      "shape": [
+        4736,
+        1024
+      ],
+      "dtype": "torch.bfloat16",
+      "parameters": 4849664,
+      "size_mib": 9.25
+    },
+    {
+      "parameter": "vision_encoder.backbone.layers.11.mlp.fc2.weight",
+      "shape": [
+        1024,
+        4736
+      ],
+      "dtype": "torch.bfloat16",
+      "parameters": 4849664,
+      "size_mib": 9.25
+    },
+    {
+      "parameter": "vision_encoder.backbone.layers.12.mlp.fc1.weight",
+      "shape": [
+        4736,
+        1024
+      ],
+      "dtype": "torch.bfloat16",
+      "parameters": 4849664,
+      "size_mib": 9.25
+    },
+    {
+      "parameter": "vision_encoder.backbone.layers.12.mlp.fc2.weight",
+      "shape": [
+        1024,
+        4736
+      ],
+      "dtype": "torch.bfloat16",
+      "parameters": 4849664,
+      "size_mib": 9.25
+    },
+    {
+      "parameter": "vision_encoder.backbone.layers.13.mlp.fc1.weight",
+      "shape": [
+        4736,
+        1024
+      ],
+      "dtype": "torch.bfloat16",
+      "parameters": 4849664,
+      "size_mib": 9.25
+    },
+    {
+      "parameter": "vision_encoder.backbone.layers.13.mlp.fc2.weight",
+      "shape": [
+        1024,
+        4736
+      ],
+      "dtype": "torch.bfloat16",
+      "parameters": 4849664,
+      "size_mib": 9.25
+    },
+    {
+      "parameter": "vision_encoder.backbone.layers.14.mlp.fc1.weight",
+      "shape": [
+        4736,
+        1024
+      ],
+      "dtype": "torch.bfloat16",
+      "parameters": 4849664,
+      "size_mib": 9.25
+    }
+  ]
+}

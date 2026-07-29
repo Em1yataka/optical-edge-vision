@@ -1,0 +1,171 @@
+{
+  "benchmark_version": "1.0",
+  "timestamp": "2026-07-16T17:18:39.787369",
+  "pipeline": {
+    "name": "YOLOv8n FP32 + SAM2 Hiera Tiny BF16",
+    "task": "person detection followed by box-prompted segmentation"
+  },
+  "models": {
+    "yolo": {
+      "name": "YOLOv8n",
+      "checkpoint": "yolov8n.pt",
+      "precision": "FP32",
+      "integer_quantized": false,
+      "parameters": 3151904,
+      "flops_g": 8.9
+    },
+    "sam2": {
+      "name": "SAM2 Hiera Tiny",
+      "generation": "SAM2 original",
+      "checkpoint": "./checkpoints/sam2_hiera_tiny.pt",
+      "config": "sam2_hiera_t.yaml",
+      "weight_precision": "FP32",
+      "execution_precision": "BF16 autocast",
+      "integer_quantized": false,
+      "parameters": 38945986
+    }
+  },
+  "camera": {
+    "device": 0,
+    "width": 640,
+    "height": 480,
+    "reported_fps": 10.0
+  },
+  "protocol": {
+    "power_mode": "15W",
+    "warmup_frames": 60,
+    "requested_measured_frames": 600,
+    "actual_measured_frames": 600,
+    "sam2_interval_frames": 60,
+    "camera_capture_included": true,
+    "yolo_preprocessing_included": true,
+    "yolo_inference_included": true,
+    "yolo_postprocessing_included": true,
+    "sam2_image_encoding_included": true,
+    "sam2_prompt_and_decoder_included": true,
+    "mask_overlay_included": true,
+    "opencv_display_included": true,
+    "model_loading_excluded": true,
+    "yolo_runs_every_frame": true,
+    "sam2_requires_person_detection": true
+  },
+  "run": {
+    "start_time": "2026-07-16T17:17:34.970014",
+    "end_time": "2026-07-16T17:18:39.770188",
+    "duration_s": 64.86207300200476,
+    "measured_frames": 600,
+    "detected_person_frames": 0,
+    "sam2_inference_count": 0,
+    "throughput_fps": 9.250398148413405,
+    "fps_from_mean_loop_time": 9.251875006393863
+  },
+  "timing_ms": {
+    "camera_capture": {
+      "count": 600,
+      "mean": 59.89171226140267,
+      "std": 4.015441288818452,
+      "min": 38.236436987062916,
+      "median": 60.48069598909933,
+      "p95": 65.29468844237272,
+      "max": 68.32783599384129
+    },
+    "yolo_end_to_end": {
+      "count": 600,
+      "mean": 42.767427655004816,
+      "std": 3.44199868255929,
+      "min": 36.630541988415644,
+      "median": 42.217004505801015,
+      "p95": 49.287580099189654,
+      "max": 58.586421015206724
+    },
+    "sam2_image_encoder": {
+      "count": 0,
+      "mean": null,
+      "std": null,
+      "min": null,
+      "median": null,
+      "p95": null,
+      "max": null
+    },
+    "sam2_prompt_and_decoder": {
+      "count": 0,
+      "mean": null,
+      "std": null,
+      "min": null,
+      "median": null,
+      "p95": null,
+      "max": null
+    },
+    "sam2_complete": {
+      "count": 0,
+      "mean": null,
+      "std": null,
+      "min": null,
+      "median": null,
+      "p95": null,
+      "max": null
+    },
+    "mask_overlay_and_box": {
+      "count": 600,
+      "mean": 0.0010564003605395555,
+      "std": 0.00025396642326750286,
+      "min": 0.0004479952622205019,
+      "median": 0.0010240182746201754,
+      "p95": 0.0014720135368406773,
+      "max": 0.0023040047381073236
+    },
+    "opencv_display": {
+      "count": 600,
+      "mean": 4.479948471416719,
+      "std": 0.7986150050288022,
+      "min": 3.2151729974430054,
+      "median": 4.3069199891760945,
+      "p95": 5.6447166585712685,
+      "max": 13.55898700421676
+    },
+    "complete_frame_loop": {
+      "count": 600,
+      "mean": 108.08619866880083,
+      "std": 4.710534826077462,
+      "min": 88.89979697414674,
+      "median": 108.34074098966084,
+      "p95": 115.38166964310221,
+      "max": 128.97471801261418
+    }
+  },
+  "predictions": {
+    "yolo_confidence": {
+      "count": 0,
+      "mean": null,
+      "std": null,
+      "min": null,
+      "median": null,
+      "p95": null,
+      "max": null
+    },
+    "sam2_score": {
+      "count": 0,
+      "mean": null,
+      "std": null,
+      "min": null,
+      "median": null,
+      "p95": null,
+      "max": null
+    }
+  },
+  "memory": {
+    "cuda_peak_allocated_bytes": 340184576,
+    "cuda_peak_allocated_mb": 324.42529296875,
+    "cuda_peak_reserved_bytes": 360710144,
+    "cuda_peak_reserved_mb": 344.0,
+    "process_max_rss_kb": 1788980,
+    "process_max_rss_mb": 1747.05078125
+  },
+  "environment": {
+    "pytorch": "2.11.0",
+    "cuda": "12.6",
+    "gpu": "Orin",
+    "power_mode": "15W"
+  },
+  "model_initialization_s": 2.1294717519776896
+}

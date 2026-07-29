@@ -1,0 +1,12 @@
+{
+  "model": "YOLOv8n",
+  "precision": "FP32",
+  "power_mode": "15W",
+  "start_time": "2026-07-16T16:28:26.685603",
+  "end_time": "2026-07-16T16:29:26.705238",
+  "duration_s": 60.01965580199612,
+  "inference_count": 2388,
+  "mean_time_s": 0.025133859213566215,
+  "mean_time_ms": 25.133859213566215,
+  "throughput_fps": 39.78696592126375
+}

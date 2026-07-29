@@ -1,0 +1,102 @@
+{
+  "model": "YOLOv8n",
+  "power_mode": "15W",
+  "power_rail": "VDD_IN",
+  "idle_power": {
+    "samples": 531,
+    "mean_w": 5.248521657250471,
+    "sample_std_w": 0.04507491669414587,
+    "min_w": 5.156,
+    "median_w": 5.234,
+    "max_w": 5.431
+  },
+  "results": {
+    "FP32": {
+      "run": {
+        "model": "YOLOv8n",
+        "precision": "FP32",
+        "power_mode": "15W",
+        "start_time": "2026-07-16T16:28:26.685603",
+        "end_time": "2026-07-16T16:29:26.705238",
+        "duration_s": 60.01965580199612,
+        "inference_count": 2388,
+        "mean_time_s": 0.025133859213566215,
+        "mean_time_ms": 25.133859213566215,
+        "throughput_fps": 39.78696592126375
+      },
+      "active_window": {
+        "start_inclusive": "2026-07-16T16:28:27",
+        "end_exclusive": "2026-07-16T16:29:26"
+      },
+      "active_power": {
+        "samples": 528,
+        "mean_w": 9.370791666666666,
+        "sample_std_w": 0.16282938931685656,
+        "min_w": 7.505,
+        "median_w": 9.376,
+        "max_w": 9.494
+      },
+      "incremental_power_w": 4.122270009416194,
+      "energy": {
+        "gross_total_j": 562.4316904255469,
+        "incremental_total_j": 247.4172270880513,
+        "gross_j_per_inference": 0.2355241584696595,
+        "incremental_j_per_inference": 0.1036085540569729,
+        "gross_inferences_per_joule": 4.245848946017235,
+        "incremental_inferences_per_joule": 9.651712728758998,
+        "fps_per_active_watt": 4.245848946017235
+      }
+    },
+    "FP16": {
+      "run": {
+        "model": "YOLOv8n",
+        "precision": "FP16",
+        "power_mode": "15W",
+        "start_time": "2026-07-16T16:31:14.074333",
+        "end_time": "2026-07-16T16:32:14.088689",
+        "duration_s": 60.01437696997891,
+        "inference_count": 2270,
+        "mean_time_s": 0.02643805152862507,
+        "mean_time_ms": 26.43805152862507,
+        "throughput_fps": 37.824270026755855
+      },
+      "active_window": {
+        "start_inclusive": "2026-07-16T16:31:15",
+        "end_exclusive": "2026-07-16T16:32:14"
+      },
+      "active_power": {
+        "samples": 525,
+        "mean_w": 7.9375904761904765,
+        "sample_std_w": 0.06774749583244172,
+        "min_w": 7.557,
+        "median_w": 7.937,
+        "max_w": 8.173
+      },
+      "incremental_power_w": 2.6890688189400054,
+      "energy": {
+        "gross_total_j": 476.36954707140967,
+        "incremental_total_j": 161.38278979808146,
+        "gross_j_per_inference": 0.20985442602264742,
+        "incremental_j_per_inference": 0.07109373999915483,
+        "gross_inferences_per_joule": 4.765208048993355,
+        "incremental_inferences_per_joule": 14.065936044606573,
+        "fps_per_active_watt": 4.765208048993355
+      }
+    }
+  },
+  "comparison": {
+    "throughput_percent_change_fp16_vs_fp32": -4.933012229160585,
+    "active_power_percent_change_fp16_vs_fp32": -15.294344826534816,
+    "gross_energy_percent_change_fp16_vs_fp32": -10.89898064546906,
+    "incremental_energy_percent_change_fp16_vs_fp32": -31.38236447150747
+  },
+  "method": {
+    "same_day_paired_measurement": true,
+    "tegrastats_interval_ms": 100,
+    "camera_included": false,
+    "display_included": false,
+    "preprocessing_included": true,
+    "inference_included": true,
+    "postprocessing_included": true
+  }
+}

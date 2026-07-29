@@ -1,0 +1,21 @@
+{
+  "model": "SAM2 Hiera Tiny",
+  "generation": "SAM2 original",
+  "precision": "FP32",
+  "power_mode": "15W",
+  "start_time": "2026-07-16T16:41:17.517390",
+  "end_time": "2026-07-16T16:42:17.988324",
+  "duration_s": 60.4709582439973,
+  "inference_count": 97,
+  "mean_time_s": 0.623411940659766,
+  "mean_time_ms": 623.411940659766,
+  "throughput_fps": 1.6040757880602758,
+  "workload": {
+    "image_encoding_included": true,
+    "prompt_and_decoder_included": true,
+    "prompt": "one positive center point",
+    "multimask_output": true,
+    "camera_capture_included": false,
+    "visualization_included": false
+  }
+}

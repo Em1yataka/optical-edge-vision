@@ -1,0 +1,88 @@
+{
+  "experiment": "YOLOv8n FP32 + SAM2 Hiera Tiny BF16 offline pipeline reproducibility",
+  "independent_repeats": 3,
+  "iterations_per_repeat": 100,
+  "runs": [
+    {
+      "repeat": 1,
+      "throughput_fps": 3.1083883539733517,
+      "pipeline_mean_ms": 320.93553169979714,
+      "pipeline_p95_ms": 329.7029755092808,
+      "yolo_mean_ms": 32.03909513249528,
+      "sam2_mean_ms": 287.4182160111377,
+      "cuda_peak_mb": 537.4462890625,
+      "rss_peak_mb": 2506.0234375
+    },
+    {
+      "repeat": 2,
+      "throughput_fps": 3.1026413402057242,
+      "pipeline_mean_ms": 321.52794124849606,
+      "pipeline_p95_ms": 334.1324719483964,
+      "yolo_mean_ms": 32.21615356975235,
+      "sam2_mean_ms": 287.81262581032934,
+      "cuda_peak_mb": 537.4462890625,
+      "rss_peak_mb": 2498.49609375
+    },
+    {
+      "repeat": 3,
+      "throughput_fps": 3.1222825234538023,
+      "pipeline_mean_ms": 319.5204602633021,
+      "pipeline_p95_ms": 328.690414011362,
+      "yolo_mean_ms": 31.703287631680723,
+      "sam2_mean_ms": 286.3678611718933,
+      "cuda_peak_mb": 537.4462890625,
+      "rss_peak_mb": 2521.5546875
+    }
+  ],
+  "cross_run_statistics": {
+    "throughput_fps": {
+      "mean": 3.111104072544293,
+      "sample_std": 0.010098285268478072,
+      "min": 3.1026413402057242,
+      "max": 3.1222825234538023,
+      "coefficient_of_variation_percent": 0.3245884751203321
+    },
+    "pipeline_mean_ms": {
+      "mean": 320.6613110705318,
+      "sample_std": 1.0314517398380165,
+      "min": 319.5204602633021,
+      "max": 321.52794124849606,
+      "coefficient_of_variation_percent": 0.32166391897872
+    },
+    "pipeline_p95_ms": {
+      "mean": 330.84195382301306,
+      "sample_std": 2.894296520205575,
+      "min": 328.690414011362,
+      "max": 334.1324719483964,
+      "coefficient_of_variation_percent": 0.8748275382734274
+    },
+    "yolo_mean_ms": {
+      "mean": 31.986178777976118,
+      "sample_std": 0.260495629599079,
+      "min": 31.703287631680723,
+      "max": 32.21615356975235,
+      "coefficient_of_variation_percent": 0.814400592853691
+    },
+    "sam2_mean_ms": {
+      "mean": 287.19956766445347,
+      "sample_std": 0.7467874796417074,
+      "min": 286.3678611718933,
+      "max": 287.81262581032934,
+      "coefficient_of_variation_percent": 0.26002388712305047
+    },
+    "cuda_peak_mb": {
+      "mean": 537.4462890625,
+      "sample_std": 0.0,
+      "min": 537.4462890625,
+      "max": 537.4462890625,
+      "coefficient_of_variation_percent": 0.0
+    },
+    "rss_peak_mb": {
+      "mean": 2508.69140625,
+      "sample_std": 11.758538572888945,
+      "min": 2498.49609375,
+      "max": 2521.5546875,
+      "coefficient_of_variation_percent": 0.468712036227112
+    }
+  }
+}

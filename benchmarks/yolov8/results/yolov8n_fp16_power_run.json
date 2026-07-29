@@ -1,0 +1,12 @@
+{
+  "model": "YOLOv8n",
+  "precision": "FP16",
+  "power_mode": "15W",
+  "start_time": "2026-07-16T16:31:14.074333",
+  "end_time": "2026-07-16T16:32:14.088689",
+  "duration_s": 60.01437696997891,
+  "inference_count": 2270,
+  "mean_time_s": 0.02643805152862507,
+  "mean_time_ms": 26.43805152862507,
+  "throughput_fps": 37.824270026755855
+}

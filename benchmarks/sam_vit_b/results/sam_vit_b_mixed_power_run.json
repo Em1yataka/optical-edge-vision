@@ -1,0 +1,25 @@
+{
+  "model": "SAM ViT-B",
+  "precision": {
+    "image_encoder": "FP16",
+    "embedding": "FP32",
+    "prompt_encoder": "FP32",
+    "mask_decoder": "FP32"
+  },
+  "power_mode": "15W",
+  "start_time": "2026-07-15T18:12:06.038278",
+  "end_time": "2026-07-15T18:13:06.270260",
+  "duration_s": 60.232005347002996,
+  "inference_count": 61,
+  "mean_time_s": 0.9874099237213606,
+  "mean_time_ms": 987.4099237213605,
+  "throughput_fps": 1.012750607398384,
+  "workload": {
+    "includes_image_encoding": true,
+    "includes_prompt_and_decoder": true,
+    "camera_capture_included": false,
+    "visualization_included": false,
+    "prompt": "one positive center point",
+    "multimask_output": true
+  }
+}

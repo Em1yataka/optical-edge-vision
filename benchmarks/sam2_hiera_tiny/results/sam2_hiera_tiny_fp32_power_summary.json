@@ -1,0 +1,69 @@
+{
+  "model": "SAM2 Hiera Tiny",
+  "generation": "SAM2 original",
+  "precision": "FP32",
+  "power_mode": "15W",
+  "power_rail": "VDD_IN",
+  "active_log": "/home/xia/jetson_projects/sam2_test/sam2/benchmark_results/sam2_active_15w.log",
+  "active_window": {
+    "start_inclusive": "2026-07-15T18:19:44",
+    "end_exclusive": "2026-07-15T18:20:43"
+  },
+  "idle_power": {
+    "samples": 531,
+    "mean_w": 5.288952919020716,
+    "sample_std_w": 0.08749130224129906,
+    "min_w": 5.195,
+    "median_w": 5.274,
+    "max_w": 5.628
+  },
+  "active_power": {
+    "samples": 521,
+    "mean_w": 11.198282149712092,
+    "sample_std_w": 0.13220854391680067,
+    "min_w": 9.925,
+    "median_w": 11.202,
+    "max_w": 11.496
+  },
+  "incremental_power_w": 5.909329230691377,
+  "run": {
+    "model": "SAM2 Hiera Tiny",
+    "generation": "SAM2 original",
+    "precision": "FP32",
+    "power_mode": "15W",
+    "start_time": "2026-07-15T18:19:43.357175",
+    "end_time": "2026-07-15T18:20:43.875246",
+    "duration_s": 60.51809593800863,
+    "inference_count": 97,
+    "mean_time_s": 0.6238978962681302,
+    "mean_time_ms": 623.8978962681302,
+    "throughput_fps": 1.6028263694773446,
+    "workload": {
+      "image_encoding_included": true,
+      "prompt_and_decoder_included": true,
+      "prompt": "one positive center point",
+      "multimask_output": true,
+      "camera_capture_included": false,
+      "visualization_included": false
+    }
+  },
+  "energy": {
+    "gross_total_energy_j": 677.6987134771659,
+    "incremental_total_energy_j": 357.62135331225943,
+    "gross_energy_per_inference_j": 6.986584675022329,
+    "incremental_energy_per_inference_j": 3.6868180753841178,
+    "gross_inferences_per_joule": 0.1431314507036736,
+    "incremental_inferences_per_joule": 0.2712366001123647,
+    "fps_per_active_watt": 0.1431314507036736
+  },
+  "method": {
+    "tegrastats_interval_ms": 100,
+    "instantaneous_vdd_in_used": true,
+    "common_15w_idle_baseline_used": true,
+    "boundary_seconds_discarded": true,
+    "image_encoding_included": true,
+    "prompt_and_decoder_included": true,
+    "camera_capture_included": false,
+    "visualization_included": false
+  }
+}

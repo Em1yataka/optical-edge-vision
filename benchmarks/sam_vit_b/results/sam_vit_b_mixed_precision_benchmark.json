@@ -1,0 +1,116 @@
+{
+  "benchmark_version": "1.0",
+  "timestamp": "2026-07-15T18:09:50.226792",
+  "model": {
+    "name": "SAM ViT-B",
+    "checkpoint": "/home/xia/jetson_projects/sam_test/segment-anything/checkpoints/sam_vit_b_01ec64.pth",
+    "checkpoint_bytes": 375042383,
+    "model_type": "vit_b",
+    "parameters": {
+      "total": 93735472,
+      "trainable": 93735472,
+      "image_encoder": 89670912,
+      "prompt_encoder": 6220,
+      "mask_decoder": 4058340
+    },
+    "precision": {
+      "image_encoder": "FP16",
+      "image_embedding_after_encoder": "FP32",
+      "prompt_encoder": "FP32",
+      "mask_decoder": "FP32",
+      "integer_quantized": false
+    },
+    "dtypes": {
+      "image_encoder": [
+        "torch.float16"
+      ],
+      "prompt_encoder": [
+        "torch.float32"
+      ],
+      "mask_decoder": [
+        "torch.float32"
+      ]
+    }
+  },
+  "input": {
+    "image_path": "/home/xia/jetson_projects/sam2_test/test_image.jpg",
+    "original_size": [
+      640,
+      480
+    ],
+    "source_size_after_manual_resize": [
+      256,
+      256
+    ],
+    "model_internal_input": [
+      1024,
+      1024
+    ],
+    "batch_size": 1,
+    "prompt": "one positive center point",
+    "multimask_output": true
+  },
+  "protocol": {
+    "encoder_warmup": 3,
+    "encoder_runs": 20,
+    "prompt_warmup": 10,
+    "prompt_runs": 100,
+    "end_to_end_warmup": 3,
+    "end_to_end_runs": 30,
+    "cuda_synchronization": true,
+    "model_loading_excluded_from_inference": true,
+    "camera_capture_included": false,
+    "visualization_included": false
+  },
+  "timing_ms": {
+    "image_encoder": {
+      "count": 20,
+      "mean": 962.8829195018625,
+      "std": 4.205155636830229,
+      "min": 955.9932660049526,
+      "median": 963.2397960012895,
+      "p95": 968.6508515587775,
+      "max": 968.7736399937421
+    },
+    "prompt_and_mask_decoder": {
+      "count": 100,
+      "mean": 29.3287607099046,
+      "std": 3.098740097108349,
+      "min": 26.26649801095482,
+      "median": 27.89318149734754,
+      "p95": 35.247463459381834,
+      "max": 39.25190199515782
+    },
+    "end_to_end": {
+      "count": 30,
+      "mean": 1002.9806359661355,
+      "std": 22.40845836079226,
+      "min": 989.2134539986728,
+      "median": 998.370403998706,
+      "p95": 1009.844509697723,
+      "max": 1119.1289440030232
+    },
+    "end_to_end_fps": 0.9970282218227828,
+    "model_load_s": 1.3568717779999133
+  },
+  "memory": {
+    "cuda_peak_allocated_bytes": 1478806528,
+    "cuda_peak_allocated_mb": 1410.2998046875,
+    "cuda_peak_reserved_bytes": 1744830464,
+    "cuda_peak_reserved_mb": 1664.0,
+    "process_max_rss_kb": 3810308,
+    "process_max_rss_mb": 3721.00390625
+  },
+  "output": {
+    "best_score_last_run": 0.9161188006401062,
+    "mask_count": 3
+  },
+  "environment": {
+    "python": "3.10.12 (main, Jun 22 2026, 18:55:27) [GCC 11.4.0]",
+    "pytorch": "2.11.0",
+    "cuda": "12.6",
+    "gpu": "Orin",
+    "platform": "Linux-5.15.148-tegra-aarch64-with-glibc2.35",
+    "power_mode": "15W"
+  }
+}
